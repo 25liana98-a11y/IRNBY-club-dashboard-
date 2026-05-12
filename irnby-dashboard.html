@@ -198,6 +198,48 @@
   .note { background: #F7F7F7; border-radius: 8px; padding: 12px 16px; font-size: 12px; color: #555; margin-top: 12px; }
   .note-yellow { background: #FFFBF0; border: 1px solid #F0E0A0; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: #666; margin-top: 12px; }
 
+  /* PERIOD BAR */
+  .period-bar {
+    background: #fff;
+    border-bottom: 1px solid #E8E8E8;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .period-btn {
+    background: #F0F0EE;
+    border: none;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 14px;
+    cursor: pointer;
+    color: #555;
+    font-family: inherit;
+    transition: background .12s, color .12s;
+  }
+  .period-btn:hover { background: #E0E0DC; color: #222; }
+  .period-btn.active { background: #0D0D0D; color: #fff; }
+
+  /* DYNAMIC METRIC CARDS */
+  .metric-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 16px; }
+  .metric-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 16px; }
+  .metric-card {
+    background: #fff; border-radius: 12px; padding: 18px 20px;
+    border: 1px solid #E8E8E8;
+  }
+  .metric-label { font-size: 11px; color: #888; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .06em; }
+  .metric-value { font-size: 24px; font-weight: 600; line-height: 1; margin-bottom: 4px; }
+  .metric-sub { font-size: 12px; color: #888; }
+  .metric-value.up { color: #1A7A4A; }
+  .metric-value.down { color: #C0392B; }
+
+  /* PERIOD SECTION */
+  .period-section { display: none; }
+  .period-section.active { display: block; }
+
   /* FOOTER */
   .footer { text-align: center; padding: 32px; font-size: 12px; color: #AAA; border-top: 1px solid #E8E8E8; margin-top: 32px; }
 
@@ -233,15 +275,139 @@
   </div>
 </div>
 
+<!-- PERIOD SELECTOR -->
+<div class="period-bar">
+  <div style="max-width:960px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+    <span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-right:4px">Период:</span>
+    <button class="period-btn active" onclick="setPeriod('all')">Янв–Апр</button>
+    <button class="period-btn" onclick="setPeriod('jan')">Январь</button>
+    <button class="period-btn" onclick="setPeriod('feb')">Февраль</button>
+    <button class="period-btn" onclick="setPeriod('mar')">Март</button>
+    <button class="period-btn" onclick="setPeriod('apr')">Апрель</button>
+  </div>
+</div>
+
 <div class="container">
 
 <!-- ======================================= -->
 <!-- TAB 1: ИТОГИ -->
 <!-- ======================================= -->
 <div id="tab-overview" class="tab-panel active">
-  <div class="section-title">Итоги периода</div>
-  <div class="section-desc">Ключевые показатели за январь–апрель 2026</div>
 
+  <!-- PERIOD: ALL -->
+  <div class="period-section active" data-period="all">
+    <div class="section-title">Итоги за январь–апрель 2026</div>
+    <div class="section-desc">Сводные показатели за 4 месяца · источник: Яндекс.Метрика + UTM-данные</div>
+    <div class="kpi-grid" style="margin-bottom:16px">
+      <div class="kpi-card"><div class="kpi-label">Расходы на рекламу</div><div class="kpi-value">186,8 тыс ₽</div><div class="kpi-sub">сумма за 4 месяца</div></div>
+      <div class="kpi-card"><div class="kpi-label">Визиты</div><div class="kpi-value">121,6 тыс</div><div class="kpi-sub">суммарно</div></div>
+      <div class="kpi-card"><div class="kpi-label">Достижения целей</div><div class="kpi-value">10 774</div><div class="kpi-sub">покупки / целевые действия</div></div>
+      <div class="kpi-card"><div class="kpi-label">Средняя конверсия</div><div class="kpi-value">4,15%</div><div class="kpi-sub">среднее за 4 мес</div></div>
+    </div>
+    <div class="chart-card" style="margin-bottom:16px">
+      <h2>Трафик и расходы по месяцам</h2>
+      <div class="chart-desc">Февраль — пик по визитам (40,6 тыс) и расходам (60,2 тыс). Апрель — самый тихий месяц</div>
+      <div style="position:relative;height:240px"><canvas id="monthlyChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- PERIOD: JAN -->
+  <div class="period-section" data-period="jan">
+    <div class="section-title">Январь 2026</div>
+    <div class="section-desc">01.01 – 31.01.2026 · Яндекс.Метрика</div>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="metric-label">Расходы</div><div class="metric-value">36 600 ₽</div><div class="metric-sub">Яндекс.Директ</div></div>
+      <div class="metric-card"><div class="metric-label">Визиты</div><div class="metric-value">31 800</div><div class="metric-sub">Посетители: 25 200</div></div>
+      <div class="metric-card"><div class="metric-label">Конверсия</div><div class="metric-value up">4,65%</div><div class="metric-sub">Лучший месяц по конверсии</div></div>
+      <div class="metric-card"><div class="metric-label">Достижения целей</div><div class="metric-value">2 952</div><div class="metric-sub">покупки / целевые действия</div></div>
+    </div>
+    <div class="metric-grid-3">
+      <div class="metric-card"><div class="metric-label">Время на сайте</div><div class="metric-value">2:21</div><div class="metric-sub">мин:сек</div></div>
+      <div class="metric-card"><div class="metric-label">Отказы</div><div class="metric-value down">32,22%</div><div class="metric-sub">самый высокий за период</div></div>
+      <div class="metric-card"><div class="metric-label">Глубина просмотра</div><div class="metric-value">2,94</div><div class="metric-sub">страниц за визит</div></div>
+    </div>
+    <div class="chart-card">
+      <h2>Источники трафика · Январь</h2>
+      <div class="chart-desc">Прямые заходы лидируют — январь даёт мотивированную аудиторию сразу после НГ</div>
+      <div style="position:relative;height:220px"><canvas id="srcChartJan"></canvas></div>
+    </div>
+    <div class="note" style="margin-top:0">Новые: 23 700 · Вернувшиеся: 4 540 · Просмотры страниц: 93 600</div>
+  </div>
+
+  <!-- PERIOD: FEB -->
+  <div class="period-section" data-period="feb">
+    <div class="section-title">Февраль 2026</div>
+    <div class="section-desc">01.02 – 28.02.2026 · Яндекс.Метрика</div>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="metric-label">Расходы</div><div class="metric-value down">60 200 ₽</div><div class="metric-sub">↑ максимум за период</div></div>
+      <div class="metric-card"><div class="metric-label">Визиты</div><div class="metric-value up">40 600</div><div class="metric-sub">Посетители: 31 100 · +39%</div></div>
+      <div class="metric-card"><div class="metric-label">Конверсия</div><div class="metric-value">3,76%</div><div class="metric-sub">ниже января</div></div>
+      <div class="metric-card"><div class="metric-label">Достижения целей</div><div class="metric-value up">3 161</div><div class="metric-sub">↑ максимум за период</div></div>
+    </div>
+    <div class="metric-grid-3">
+      <div class="metric-card"><div class="metric-label">Время на сайте</div><div class="metric-value down">1:57</div><div class="metric-sub">−16% к январю</div></div>
+      <div class="metric-card"><div class="metric-label">Отказы</div><div class="metric-value">29,82%</div><div class="metric-sub">↓ улучшение</div></div>
+      <div class="metric-card"><div class="metric-label">Глубина просмотра</div><div class="metric-value">2,49</div><div class="metric-sub">−14% к январю</div></div>
+    </div>
+    <div class="chart-card">
+      <h2>Источники трафика · Февраль</h2>
+      <div class="chart-desc">Февраль: реклама выходит на первое место — праздники (14 февраля, 23 февраля) дали пик активности</div>
+      <div style="position:relative;height:220px"><canvas id="srcChartFeb"></canvas></div>
+    </div>
+    <div class="note" style="margin-top:0">Новые: 29 300 · Вернувшиеся: 6 188 · Просмотры страниц: 101 200</div>
+  </div>
+
+  <!-- PERIOD: MAR -->
+  <div class="period-section" data-period="mar">
+    <div class="section-title">Март 2026</div>
+    <div class="section-desc">01.03 – 31.03.2026 · Яндекс.Метрика</div>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="metric-label">Расходы</div><div class="metric-value">47 200 ₽</div><div class="metric-sub">↓ снизили бюджет</div></div>
+      <div class="metric-card"><div class="metric-label">Визиты</div><div class="metric-value down">29 000</div><div class="metric-sub">Посетители: 21 800 · −32%</div></div>
+      <div class="metric-card"><div class="metric-label">Конверсия</div><div class="metric-value down">3,66%</div><div class="metric-sub">минимум за период</div></div>
+      <div class="metric-card"><div class="metric-label">Достижения целей</div><div class="metric-value down">2 374</div><div class="metric-sub">−25% к февралю</div></div>
+    </div>
+    <div class="metric-grid-3">
+      <div class="metric-card"><div class="metric-label">Время на сайте</div><div class="metric-value up">2:18</div><div class="metric-sub">+16% к февралю</div></div>
+      <div class="metric-card"><div class="metric-label">Отказы</div><div class="metric-value up">28,86%</div><div class="metric-sub">↓ лучше чем в феврале</div></div>
+      <div class="metric-card"><div class="metric-label">Глубина просмотра</div><div class="metric-value">2,58</div><div class="metric-sub">+2,6% к февралю</div></div>
+    </div>
+    <div class="chart-card">
+      <h2>Источники трафика · Март</h2>
+      <div class="chart-desc">Март (8 марта): прямые заходы вернулись на первое место, реклама на третьем</div>
+      <div style="position:relative;height:220px"><canvas id="srcChartMar"></canvas></div>
+    </div>
+    <div class="note" style="margin-top:0">Новые: 20 100 · Вернувшиеся: 4 493 · Просмотры страниц: 74 600</div>
+  </div>
+
+  <!-- PERIOD: APR -->
+  <div class="period-section" data-period="apr">
+    <div class="section-title">Апрель 2026</div>
+    <div class="section-desc">01.04 – 30.04.2026 · Яндекс.Метрика</div>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="metric-label">Расходы</div><div class="metric-value">42 800 ₽</div><div class="metric-sub">самый низкий бюджет</div></div>
+      <div class="metric-card"><div class="metric-label">Визиты</div><div class="metric-value down">20 200</div><div class="metric-sub">Посетители: 15 400 · −28%</div></div>
+      <div class="metric-card"><div class="metric-label">Конверсия</div><div class="metric-value up">4,54%</div><div class="metric-sub">↑ выросла несмотря на спад</div></div>
+      <div class="metric-card"><div class="metric-label">Достижения целей</div><div class="metric-value down">2 287</div><div class="metric-sub">минимум за период</div></div>
+    </div>
+    <div class="metric-grid-3">
+      <div class="metric-card"><div class="metric-label">Время на сайте</div><div class="metric-value">2:19</div><div class="metric-sub">стабильно</div></div>
+      <div class="metric-card"><div class="metric-label">Отказы</div><div class="metric-value up">28,48%</div><div class="metric-sub">↓ минимум за период</div></div>
+      <div class="metric-card"><div class="metric-label">Глубина просмотра</div><div class="metric-value up">2,72</div><div class="metric-sub">+6,5% к марту</div></div>
+    </div>
+    <div class="chart-card">
+      <h2>Источники трафика · Апрель</h2>
+      <div class="chart-desc">Апрель: реклама упала на 4-е место — прямые заходы и соцсети удерживают трафик</div>
+      <div style="position:relative;height:220px"><canvas id="srcChartApr"></canvas></div>
+    </div>
+    <div class="note" style="margin-top:0">Новые: 14 300 · Вернувшиеся: 3 061 · Просмотры страниц: 54 900</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- STATIC CONTENT: shown always -->
+  <div class="section-title" style="font-size:17px;margin-bottom:6px">Сводные KPI за 4 месяца</div>
+  <div class="section-desc">Данные по выручке и каналам (UTM) · полный период</div>
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="kpi-label">Общая выручка</div>
@@ -963,6 +1129,88 @@ function switchTab(name) {
   // init charts lazily
   if (name === 'channels' && !window._chartsChannels) initChannelCharts();
   if (name === 'search'   && !window._chartsSearch)   initSearchChart();
+  if (name === 'overview') initOverviewCharts();
+}
+
+// PERIOD SWITCHING
+let currentPeriod = 'all';
+function setPeriod(p) {
+  currentPeriod = p;
+  document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.period-section').forEach(s => {
+    s.classList.toggle('active', s.dataset.period === p);
+  });
+  // re-init charts for the new period
+  if (p === 'all') { window._monthlyChartDone = false; }
+  initOverviewCharts();
+}
+
+// Overview / monthly charts
+function initOverviewCharts() {
+  const C = 'rgba(0,0,0,0.4)';
+  const G = 'rgba(0,0,0,0.07)';
+  const colors = ['#5599EE','#E07040','#1D9E75','#888'];
+
+  // ALL: monthly overview chart
+  if (currentPeriod === 'all' && !window._monthlyChartDone) {
+    window._monthlyChartDone = true;
+    const el = document.getElementById('monthlyChart');
+    if (el && !el._chart) {
+      el._chart = new Chart(el, {
+        type: 'bar',
+        data: {
+          labels: ['Январь','Февраль','Март','Апрель'],
+          datasets: [
+            { label: 'Визиты', data: [31800,40600,29000,20200], backgroundColor: '#B5D4F4', borderRadius:4, yAxisID:'y' },
+            { label: 'Посетители', data: [25200,31100,21800,15400], backgroundColor: '#378ADD', borderRadius:4, yAxisID:'y' },
+            { label: 'Расходы (тыс ₽)', data: [36.6,60.2,47.2,42.8], backgroundColor: '#E07040', borderRadius:4, yAxisID:'y2' }
+          ]
+        },
+        options: {
+          responsive:true, maintainAspectRatio:false,
+          plugins:{ legend:{ labels:{ font:{size:12}, color:'#555' } } },
+          scales:{
+            x:{ ticks:{color:C,font:{size:12}}, grid:{display:false} },
+            y:{ ticks:{color:C,font:{size:11}}, grid:{color:G}, title:{display:true,text:'визиты',color:C,font:{size:10}} },
+            y2:{ position:'right', ticks:{color:C,font:{size:11},callback:v=>v+' тыс'}, grid:{display:false}, title:{display:true,text:'расходы тыс ₽',color:C,font:{size:10}} }
+          }
+        }
+      });
+    }
+  }
+
+  // MONTHLY: traffic sources charts
+  const srcData = {
+    jan: { labels:['Прямые','Соц. сети','Поиск','Реклама','Ссылки'], data:[9792,7969,5396,3858,1387], colors:['#378ADD','#E07040','#1D9E75','#C0392B','#888'] },
+    feb: { labels:['Реклама','Прямые','Соц. сети','Поиск','Рассылки'], data:[13400,11700,6106,4518,1684], colors:['#C0392B','#378ADD','#E07040','#1D9E75','#5599EE'] },
+    mar: { labels:['Прямые','Соц. сети','Реклама','Поиск','Внутренние'], data:[7812,6364,5919,4014,1594], colors:['#378ADD','#E07040','#C0392B','#1D9E75','#888'] },
+    apr: { labels:['Прямые','Соц. сети','Поиск','Реклама','Рассылки'], data:[5599,4832,2913,2866,1556], colors:['#378ADD','#E07040','#1D9E75','#C0392B','#5599EE'] }
+  };
+
+  ['jan','feb','mar','apr'].forEach(m => {
+    if (currentPeriod !== m) return;
+    const id = 'srcChart' + m.charAt(0).toUpperCase() + m.slice(1);
+    const el = document.getElementById(id);
+    if (el && !el._chart && srcData[m]) {
+      const d = srcData[m];
+      el._chart = new Chart(el, {
+        type: 'bar',
+        data: {
+          labels: d.labels,
+          datasets: [{ label: 'Визиты', data: d.data, backgroundColor: d.colors, borderRadius: 5 }]
+        },
+        options: {
+          indexAxis: 'y', responsive:true, maintainAspectRatio:false,
+          plugins:{ legend:{display:false} },
+          scales:{
+            x:{ ticks:{color:C,font:{size:11},callback:v=>v.toLocaleString('ru')}, grid:{color:G} },
+            y:{ ticks:{color:C,font:{size:12}}, grid:{display:false} }
+          }
+        }
+      });
+    }
+  });
 }
 
 const textColor = 'rgba(0,0,0,0.4)';
@@ -1011,6 +1259,9 @@ function initChannelCharts() {
     }
   });
 }
+
+// Init on load
+document.addEventListener('DOMContentLoaded', () => initOverviewCharts());
 
 // Search chart
 function initSearchChart() {
