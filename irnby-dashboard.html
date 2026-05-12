@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRNBY · Маркетинг · Январь–Апрель 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+    background: #F5F5F3;
+    color: #0D0D0D;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: #0D0D0D;
+    color: #fff;
+    padding: 40px 48px 0;
+  }
+  .header-meta { font-size: 11px; letter-spacing: .12em; color: #555; text-transform: uppercase; margin-bottom: 14px; }
+  .header h1 { font-size: 36px; font-weight: 600; line-height: 1.1; margin-bottom: 6px; }
+  .header-sub { font-size: 14px; color: #777; margin-bottom: 28px; }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #222;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color .15s, border-color .15s;
+    font-family: inherit;
+  }
+  .tab-btn:hover { color: #ccc; }
+  .tab-btn.active { color: #fff; border-bottom-color: #fff; }
+
+  /* CONTENT */
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 32px 80px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .section-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 28px;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid #E0E0E0;
+    margin: 28px 0;
+  }
+
+  /* KPI GRID */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  .kpi-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+  .kpi-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .kpi-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #E8E8E8;
+  }
+  .kpi-label { font-size: 11px; color: #888; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .06em; }
+  .kpi-value { font-size: 28px; font-weight: 600; line-height: 1; margin-bottom: 6px; }
+  .kpi-sub { font-size: 12px; color: #888; }
+  .kpi-value.green { color: #1A7A4A; }
+  .kpi-value.red   { color: #C0392B; }
+  .kpi-value.blue  { color: #4285F4; }
+
+  /* CHARTS */
+  .chart-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px 28px;
+    border: 1px solid #E8E8E8;
+    margin-bottom: 16px;
+  }
+  .chart-card h2 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .chart-card .chart-desc { font-size: 13px; color: #888; margin-bottom: 18px; }
+
+  /* INSIGHT CARDS */
+  .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .insight-card {
+    background: #fff; border-radius: 12px; padding: 20px 20px 20px 24px;
+    border: 1px solid #E8E8E8;
+  }
+  .insight-card.good { border-left: 3px solid #1A7A4A; }
+  .insight-card.bad  { border-left: 3px solid #C0392B; }
+  .insight-card.warn { border-left: 3px solid #D4890A; }
+  .insight-card.mid  { border-left: 3px solid #888; }
+  .insight-label { font-size: 11px; color: #888; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .06em; }
+  .insight-value { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+  .insight-body  { font-size: 13px; color: #555; line-height: 1.5; }
+
+  /* VERDICT */
+  .verdict {
+    background: #0D0D0D; color: #fff;
+    border-radius: 12px; padding: 24px 28px; margin-top: 8px;
+  }
+  .verdict h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .verdict p  { font-size: 13px; color: #AAAAAA; line-height: 1.7; margin-bottom: 14px; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 20px; }
+  .tag.green { background: #0F3D24; color: #5DCB8A; }
+  .tag.gray  { background: #222; color: #AAA; }
+  .tag.red   { background: #3D0F0F; color: #E07070; }
+  .tag.yellow { background: #3D2F00; color: #E0B050; }
+
+  /* TABLE */
+  .table-wrap { background: #fff; border-radius: 12px; border: 1px solid #E8E8E8; overflow: hidden; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    text-align: left; padding: 12px 16px;
+    font-size: 11px; letter-spacing: .07em; text-transform: uppercase;
+    color: #888; background: #F9F9F8; border-bottom: 1px solid #E8E8E8; font-weight: 600;
+  }
+  td { padding: 13px 16px; border-bottom: 1px solid #F0F0F0; color: #333; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #FAFAFA; }
+  .conv-high { color: #1A7A4A; font-weight: 600; }
+  .conv-low  { color: #C0392B; }
+  .channel-name { font-weight: 600; color: #0D0D0D; }
+
+  /* BOX */
+  .box {
+    background: #fff; border-radius: 12px; padding: 22px 26px;
+    border: 1px solid #E8E8E8; margin-bottom: 12px;
+  }
+  .box h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .box p  { font-size: 13px; color: #444; line-height: 1.7; }
+  .box.accent-red   { border-left: 3px solid #C0392B; border-radius: 0 12px 12px 0; }
+  .box.accent-black { border-left: 3px solid #0D0D0D; border-radius: 0 12px 12px 0; }
+
+  /* ARTICLE CARD */
+  .article-card {
+    background: #fff; border-radius: 10px; padding: 14px 18px;
+    border: 1px solid #E8E8E8; margin-bottom: 8px;
+    text-decoration: none; display: block; color: inherit;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  a.article-card:hover {
+    border-color: #B0B0B0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    cursor: pointer;
+  }
+  a.article-card::after {
+    content: ' ↗';
+    font-size: 11px;
+    color: #AAA;
+  }
+  .article-tag { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+  .article-title { font-size: 13px; font-weight: 600; color: #0D0D0D; margin-bottom: 2px; }
+  .article-sub { font-size: 12px; color: #888; }
+
+  /* EMAIL CAMPAIGN CARD */
+  .email-card {
+    background: #fff; border-radius: 10px; padding: 14px 18px;
+    border: 1px solid #E8E8E8; margin-bottom: 8px;
+    text-decoration: none; display: block; color: inherit;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  a.email-card:hover { border-color: #B0B0B0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .email-stats { display: flex; gap: 16px; margin-top: 8px; flex-wrap: wrap; }
+  .email-stat { font-size: 11px; color: #888; }
+  .email-stat strong { color: #0D0D0D; font-size: 13px; display: block; }
+
+  /* FUNNEL STEPS */
+  .funnel { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0; align-items: center; margin: 20px 0; }
+  .funnel-step { border-radius: 12px; padding: 16px 18px; text-align: center; }
+  .funnel-arrow { padding: 0 10px; font-size: 20px; color: #CCC; }
+  .funnel-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+  .funnel-main  { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .funnel-note  { font-size: 11px; color: #888; }
+
+  /* NOTE BOX */
+  .note { background: #F7F7F7; border-radius: 8px; padding: 12px 16px; font-size: 12px; color: #555; margin-top: 12px; }
+  .note-yellow { background: #FFFBF0; border: 1px solid #F0E0A0; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: #666; margin-top: 12px; }
+
+  /* FOOTER */
+  .footer { text-align: center; padding: 32px; font-size: 12px; color: #AAA; border-top: 1px solid #E8E8E8; margin-top: 32px; }
+
+  @media (max-width: 640px) {
+    .header { padding: 28px 20px 0; }
+    .header h1 { font-size: 26px; }
+    .container { padding: 20px 16px 60px; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .kpi-grid-3 { grid-template-columns: 1fr 1fr; }
+    .insight-grid { grid-template-columns: 1fr; }
+    .funnel { grid-template-columns: 1fr; }
+    .funnel-arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER + TABS -->
+<div class="header">
+  <div style="max-width:960px;margin:0 auto">
+    <div class="header-meta">IRNBY Training Club &nbsp;·&nbsp; Маркетинг</div>
+    <h1>Отчёт за январь–апрель 2026</h1>
+    <div class="header-sub">Что сделали, что работает, что корректировать</div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('overview')">Итоги</button>
+      <button class="tab-btn" onclick="switchTab('channels')">Каналы</button>
+      <button class="tab-btn" onclick="switchTab('search')">Поиск</button>
+      <button class="tab-btn" onclick="switchTab('email')">Email и удержание</button>
+      <button class="tab-btn" onclick="switchTab('pr')">PR и SEO</button>
+      <button class="tab-btn" onclick="switchTab('audience')">Аудитория</button>
+      <button class="tab-btn" onclick="switchTab('analysis')">Почему упали продажи</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ======================================= -->
+<!-- TAB 1: ИТОГИ -->
+<!-- ======================================= -->
+<div id="tab-overview" class="tab-panel active">
+  <div class="section-title">Итоги периода</div>
+  <div class="section-desc">Ключевые показатели за январь–апрель 2026</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Общая выручка</div>
+      <div class="kpi-value">38,2 млн ₽</div>
+      <div class="kpi-sub">янв–апр 2026</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Средняя выручка в месяц</div>
+      <div class="kpi-value">9,6 млн ₽</div>
+      <div class="kpi-sub">среднее за 4 мес</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Доля затрат на рекламу</div>
+      <div class="kpi-value red">14%</div>
+      <div class="kpi-sub">↑ растёт каждый месяц</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Повторные покупки</div>
+      <div class="kpi-value green">30,9%</div>
+      <div class="kpi-sub">от всей базы</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div style="font-size:15px;font-weight:600;margin-bottom:16px">Что сработало хорошо</div>
+  <div class="insight-grid">
+    <div class="insight-card good">
+      <div class="insight-label">Email-воронка запущена</div>
+      <div class="insight-value">+125% за 2 месяца</div>
+      <div class="insight-body">Внедрили письмо после курса с промокодом. Месяц 1 — 24 продажи, Месяц 2 — 54 продажи. Первый системный механизм повторных покупок</div>
+    </div>
+    <div class="insight-card good">
+      <div class="insight-label">Google органика работает</div>
+      <div class="insight-value">6,49% конверсия</div>
+      <div class="insight-body">2 117 покупок без рекламных затрат. Наняли SEO-специалиста — рост органики ожидаем через 2 месяца</div>
+    </div>
+    <div class="insight-card good">
+      <div class="insight-label">PR в медиа</div>
+      <div class="insight-value">3 публикации</div>
+      <div class="insight-body">2 выхода в Московском Комсомольце, 1 в Яндекс.Дзен. В работе: КП, VC. База — 30+ журналистов tier-1</div>
+    </div>
+    <div class="insight-card good">
+      <div class="insight-label">Повторные покупки</div>
+      <div class="insight-value">30,9% базы</div>
+      <div class="insight-body">Почти треть клиентов возвращается. Это хороший показатель лояльности — нужно выстраивать систему, чтобы управлять этим</div>
+    </div>
+  </div>
+
+  <div style="font-size:15px;font-weight:600;margin-bottom:16px;margin-top:8px">Что нужно скорректировать</div>
+  <div class="insight-grid">
+    <div class="insight-card bad">
+      <div class="insight-label">Яндекс.Директ — слабая отдача</div>
+      <div class="insight-value">Конверсия 1,31%</div>
+      <div class="insight-body">Расходы 186,7 тыс ₽, но из 76 зашедших покупает только один. Органика Яндекса даёт конверсию 6,3% — в 5 раз лучше без доплаты</div>
+    </div>
+    <div class="insight-card bad">
+      <div class="insight-label">Новая аудитория падает</div>
+      <div class="insight-value">−29% новых визитов</div>
+      <div class="insight-body">Меньше новых людей узнаёт об IRNBY. Верхушка воронки сужается — нужно усиливать привлечение</div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <h3>Главный вывод</h3>
+    <p>Маркетинг работает — выручка 38,2 млн за 4 месяца, 30,9% повторных покупок, запущена email-воронка. Но модель зависит от акций: когда праздников нет — продажи падают. Задача следующего этапа — выстроить систему, которая продаёт и без праздников: email, прогрев базы, SEO.</p>
+    <div class="tags">
+      <span class="tag green">масштабировать: Email, SEO</span>
+      <span class="tag gray">держать: Instagram, Google</span>
+      <span class="tag red">пересмотреть: Яндекс.Директ</span>
+      <span class="tag yellow">развивать: PR, Threads</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================================= -->
+<!-- TAB 2: КАНАЛЫ -->
+<!-- ======================================= -->
+<div id="tab-channels" class="tab-panel">
+  <div class="section-title">Каналы продаж</div>
+  <div class="section-desc">Покупки, выручка и конверсия по каждому каналу — январь–апрель 2026</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Канал</th>
+          <th>Визиты</th>
+          <th>Конверсия</th>
+          <th>Покупки</th>
+          <th>Выручка</th>
+          <th>Заметка</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="channel-name">Instagram</td>
+          <td>24 900</td>
+          <td>4,50%</td>
+          <td>2 142</td>
+          <td>558 тыс ₽</td>
+          <td>Основной объём</td>
+        </tr>
+        <tr>
+          <td class="channel-name">Google (органика)</td>
+          <td>13 300</td>
+          <td class="conv-high">6,48%</td>
+          <td>2 117</td>
+          <td>756 тыс ₽</td>
+          <td>Лучшая выручка</td>
+        </tr>
+        <tr>
+          <td class="channel-name">Яндекс.Директ</td>
+          <td>24 600</td>
+          <td class="conv-low">1,31%</td>
+          <td>811</td>
+          <td>444 тыс ₽</td>
+          <td>Расходы 186,7 тыс ₽</td>
+        </tr>
+        <tr>
+          <td class="channel-name">Email</td>
+          <td>84</td>
+          <td class="conv-high">11,9%</td>
+          <td>27</td>
+          <td>11,8 тыс ₽</td>
+          <td>Макс. конверсия</td>
+        </tr>
+        <tr>
+          <td class="channel-name">TG-бот / приложение</td>
+          <td>873</td>
+          <td class="conv-high">10,5%</td>
+          <td>225</td>
+          <td>72,5 тыс ₽</td>
+          <td>Горячая аудитория</td>
+        </tr>
+        <tr>
+          <td class="channel-name">Telegram посты</td>
+          <td>—</td>
+          <td>—</td>
+          <td>80</td>
+          <td>37,3 тыс ₽</td>
+          <td>Органика</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-card">
+    <h2>Покупки и выручка по каналам</h2>
+    <div class="chart-desc">Instagram и Google дают примерно одинаковое число покупок, но Google приносит больше выручки — значит покупают дороже</div>
+    <div style="position:relative;height:280px">
+      <canvas id="buysChart"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <h2>Конверсия — сколько из зашедших купили</h2>
+    <div class="chart-desc">Email и TG-бот конвертируют в 8–9 раз лучше Директа. Зелёный = хорошо, красный = проблема</div>
+    <div style="position:relative;height:240px">
+      <canvas id="convChart"></canvas>
+    </div>
+  </div>
+
+  <div class="insight-grid">
+    <div class="insight-card good">
+      <div class="insight-label">Лучший по объёму</div>
+      <div class="insight-value">Instagram</div>
+      <div class="insight-body">2 142 покупки — больше всех. Основной поток продаж. Держать и развивать</div>
+    </div>
+    <div class="insight-card good">
+      <div class="insight-label">Лучший по качеству</div>
+      <div class="insight-value">Google (органика)</div>
+      <div class="insight-body">2 117 покупок, выручка 756 тыс — выше всех. Люди ищут нас сами и покупают дороже</div>
+    </div>
+    <div class="insight-card bad">
+      <div class="insight-label">Самый дорогой и слабый</div>
+      <div class="insight-value">Яндекс.Директ</div>
+      <div class="insight-body">Расходы 186,7 тыс ₽. Конверсия 1,31% — из 76 зашедших покупает только один. Нужно пересматривать таргетинг</div>
+    </div>
+    <div class="insight-card warn">
+      <div class="insight-label">Скрытый потенциал</div>
+      <div class="insight-value">Email + TG-бот</div>
+      <div class="insight-body">Конверсия 10–12%. Трафика мало, но почти каждый десятый покупает. Нужно растить этот канал</div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <h3>Что делать с бюджетом</h3>
+    <p>Email и TG-бот конвертируют в 8–9 раз лучше Директа, но почти не получают ресурсов. Если часть бюджета направить на работу с тёплой базой — выручка может вырасти без увеличения затрат.</p>
+    <div class="tags">
+      <span class="tag green">растить: Email, TG-бот</span>
+      <span class="tag gray">держать: Instagram, Google</span>
+      <span class="tag red">пересмотреть: Яндекс.Директ</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================================= -->
+<!-- TAB 3: ПОИСК -->
+<!-- ======================================= -->
+<div id="tab-search" class="tab-panel">
+  <div class="section-title">Поиск: Google vs Яндекс</div>
+  <div class="section-desc">Сравнение органического трафика и отдачи от платной рекламы в Яндексе</div>
+
+  <div class="kpi-grid-2">
+    <div class="kpi-card" style="border-left:3px solid #4285F4">
+      <div class="kpi-label" style="color:#4285F4">Google органика</div>
+      <div class="kpi-value blue">13 312</div>
+      <div class="kpi-sub">визитов · 79% всего поиска</div>
+      <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div><div style="font-size:11px;color:#888">Покупки</div><div style="font-size:20px;font-weight:600">2 117</div></div>
+        <div><div style="font-size:11px;color:#888">Выручка</div><div style="font-size:20px;font-weight:600">755 810 ₽</div></div>
+        <div><div style="font-size:11px;color:#888">Конверсия</div><div style="font-size:20px;font-weight:600;color:#1A7A4A">9,49%</div></div>
+        <div><div style="font-size:11px;color:#888">Отказы</div><div style="font-size:20px;font-weight:600">23,1%</div></div>
+      </div>
+    </div>
+    <div class="kpi-card" style="border-left:3px solid #FF4433">
+      <div class="kpi-label" style="color:#FF4433">Яндекс органика</div>
+      <div class="kpi-value red">3 460</div>
+      <div class="kpi-sub">визитов · 21% всего поиска</div>
+      <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div><div style="font-size:11px;color:#888">Покупки</div><div style="font-size:20px;font-weight:600">381</div></div>
+        <div><div style="font-size:11px;color:#888">Выручка</div><div style="font-size:20px;font-weight:600">145 493 ₽</div></div>
+        <div><div style="font-size:11px;color:#888">Конверсия</div><div style="font-size:20px;font-weight:600;color:#1A7A4A">6,30%</div></div>
+        <div><div style="font-size:11px;color:#888">Отказы</div><div style="font-size:20px;font-weight:600">23,5%</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <h2>Google vs Яндекс — визиты, покупки, выручка</h2>
+    <div class="chart-desc">Google даёт в 4 раза больше трафика и в 5 раз больше выручки, чем Яндекс органика</div>
+    <div style="position:relative;height:240px">
+      <canvas id="searchChart"></canvas>
+    </div>
+  </div>
+
+  <div class="box accent-red">
+    <h3>Парадокс Яндекс.Директ</h3>
+    <p>Мы платим 186,7 тыс ₽ за платную рекламу в Яндексе — и получаем конверсию <strong>1,31%</strong>. При этом бесплатный Яндекс органика даёт <strong>6,30%</strong>. То есть платная реклама конвертирует в 5 раз хуже, чем органика того же поисковика. Объявления ведут на неправильную страницу или бьют в холодную аудиторию, которая ещё не готова покупать.</p>
+  </div>
+
+  <div class="kpi-grid-3" style="margin-top:16px">
+    <div class="kpi-card">
+      <div class="kpi-label">Директ — время на сайте</div>
+      <div class="kpi-value" style="font-size:22px;color:#C0392B">1 мин 15 сек</div>
+      <div class="kpi-sub">Google органика — 3 мин 37 сек</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Кампания «Горячее»</div>
+      <div class="kpi-value green" style="font-size:22px">25%</div>
+      <div class="kpi-sub">конверсия · 12 покупок · масштабировать</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Директ всего за апрель</div>
+      <div class="kpi-value" style="font-size:22px">~200</div>
+      <div class="kpi-sub">покупок с учётом ассоциированных конверсий</div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <h3>Что делать с Директом</h3>
+    <p>Не отключать — он даёт ~200 покупок/месяц включая ассоциированные конверсии. Но оптимизировать: добавить брендовые запросы (миронова курсы, irnby), запустить ретаргетинг на тех кто был на сайте, масштабировать кампанию «Горячее» с 25% конверсией.</p>
+    <div class="tags">
+      <span class="tag green">масштабировать: кампания «Горячее»</span>
+      <span class="tag yellow">добавить: брендовые запросы + ретаргетинг</span>
+      <span class="tag red">исправить: холодные объявления → правильная страница</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================================= -->
+<!-- TAB 4: EMAIL И УДЕРЖАНИЕ -->
+<!-- ======================================= -->
+<div id="tab-email" class="tab-panel">
+  <div class="section-title">Email и удержание</div>
+  <div class="section-desc">Воронка повторных покупок, промокоды, TG-бот и Threads</div>
+
+  <!-- APRIL EMAIL STATS -->
+  <div style="font-size:11px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em">Апрель 2026 — показатели канала</div>
+  <div class="kpi-grid" style="margin-bottom:8px">
+    <div class="kpi-card">
+      <div class="kpi-label">Отправлено писем</div>
+      <div class="kpi-value" style="font-size:22px">777 316</div>
+      <div class="kpi-sub">+24% к марту</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Прочтений</div>
+      <div class="kpi-value green" style="font-size:22px">135 182</div>
+      <div class="kpi-sub">+24% · open rate 14%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Доставляемость</div>
+      <div class="kpi-value green" style="font-size:22px">99,9%</div>
+      <div class="kpi-sub">высокий уровень сохранён</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Отписки</div>
+      <div class="kpi-value" style="font-size:22px">922</div>
+      <div class="kpi-sub">−26% к марту ↓ хороший знак</div>
+    </div>
+  </div>
+  <div class="note" style="margin-bottom:24px">При росте объёма рассылок на 24% — качество не просело: открываемость не упала, отписки снизились. База лояльна к частоте.</div>
+
+  <!-- APRIL TOP CAMPAIGNS -->
+  <div style="font-size:11px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em">Топ-рассылки апреля</div>
+
+  <a href="https://drive.google.com/drive/folders/1vCL2ysrEhY4DI80X17cwL677onmviWjx" target="_blank" class="email-card" style="border-left:3px solid #1A7A4A">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start">
+      <div>
+        <div style="font-size:10px;color:#1A7A4A;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">🏆 Лучшая открываемость месяца</div>
+        <div style="font-size:14px;font-weight:600;color:#0D0D0D">«Сильное тело начинается с базы»</div>
+        <div style="font-size:12px;color:#666;margin-top:2px">Системный подход к тренировкам · понятный инсайт</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0;margin-left:12px">
+        <div style="font-size:22px;font-weight:700;color:#1A7A4A">50%</div>
+        <div style="font-size:10px;color:#888">open rate</div>
+      </div>
+    </div>
+    <div class="email-stats">
+      <div class="email-stat"><strong>18 320</strong>отправлено</div>
+      <div class="email-stat"><strong>9 127</strong>прочтений</div>
+      <div class="email-stat"><strong>167</strong>кликов</div>
+    </div>
+  </a>
+
+  <a href="https://drive.google.com/drive/folders/1GhvWyv8rYoiavlU-qzFOAZuZV_MBQ3WM" target="_blank" class="email-card" style="border-left:3px solid #378ADD">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start">
+      <div>
+        <div style="font-size:10px;color:#378ADD;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">🔗 Лидер по кликам</div>
+        <div style="font-size:14px;font-weight:600;color:#0D0D0D">«Запускаем жиросжигание»</div>
+        <div style="font-size:12px;color:#666;margin-top:2px">Пресейл майского марафона · актуальный оффер</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0;margin-left:12px">
+        <div style="font-size:22px;font-weight:700;color:#378ADD">282</div>
+        <div style="font-size:10px;color:#888">клика</div>
+      </div>
+    </div>
+    <div class="email-stats">
+      <div class="email-stat"><strong>71 608</strong>отправлено</div>
+      <div class="email-stat"><strong>8 961</strong>прочтений</div>
+    </div>
+  </a>
+
+  <a href="https://drive.google.com/drive/folders/1S_EZyNs7CT-71n9AuE3rHVGr3w_LBHuz" target="_blank" class="email-card">
+    <div style="font-size:14px;font-weight:600;color:#0D0D0D;margin-bottom:4px">«Твоя спина вышла из чата»</div>
+    <div style="font-size:12px;color:#666;margin-bottom:8px">Боль и забота о себе · курс «Здоровая осанка»</div>
+    <div class="email-stats">
+      <div class="email-stat"><strong>71 911</strong>отправлено</div>
+      <div class="email-stat"><strong>9 626</strong>прочтений</div>
+      <div class="email-stat"><strong>191</strong>клик</div>
+    </div>
+  </a>
+
+  <a href="https://drive.google.com/drive/folders/17kptG7dXqKTw5vTJM10mUy7RGDtBIiQR" target="_blank" class="email-card">
+    <div style="font-size:14px;font-weight:600;color:#0D0D0D;margin-bottom:4px">«Выбери свой курс за минуту»</div>
+    <div style="font-size:12px;color:#666;margin-bottom:8px">Персонализация и подбор · снижение барьера выбора</div>
+    <div class="email-stats">
+      <div class="email-stat"><strong>72 119</strong>отправлено</div>
+      <div class="email-stat"><strong>9 287</strong>прочтений</div>
+      <div class="email-stat"><strong>180</strong>кликов</div>
+    </div>
+  </a>
+
+  <a href="https://us11.besteml.com/ru/web_letter?action=6yddf89a4gtxsbfenzuy9g5mgtcahu594kfcj9ew8q69o13bu4cxy" target="_blank" class="email-card" style="border-left:3px solid #E07040">
+    <div style="font-size:14px;font-weight:600;color:#0D0D0D;margin-bottom:4px">«-20% на твой vish list» · промокод VISH20</div>
+    <div style="font-size:12px;color:#666;margin-bottom:8px">Эмоциональный заход + персональная скидка · 24 покупки за 3 дня</div>
+    <div class="email-stats">
+      <div class="email-stat"><strong>20 033</strong>отправлено</div>
+      <div class="email-stat"><strong>9 080</strong>прочтений</div>
+      <div class="email-stat"><strong>24</strong>покупки (VISH20)</div>
+    </div>
+  </a>
+
+  <a href="https://drive.google.com/drive/folders/1fq5scJpj64cwekWLHjh58OwdzTCDmUyu" target="_blank" class="email-card" style="border-left:3px solid #888">
+    <div style="font-size:14px;font-weight:600;color:#0D0D0D;margin-bottom:4px">«Остаться нельзя прощаться» — реактивация</div>
+    <div style="font-size:12px;color:#666;margin-bottom:8px">Неактивные с начала 2026 · подтверди подписку или выходи из базы</div>
+    <div class="email-stats">
+      <div class="email-stat"><strong>20 033</strong>отправлено</div>
+      <div class="email-stat"><strong>19 970</strong>исключено из базы</div>
+      <div class="email-stat" style="color:#1A7A4A"><strong>↑</strong>качество базы растёт</div>
+    </div>
+  </a>
+
+  <hr class="divider">
+
+  <!-- EMAIL FUNNEL -->
+  <div style="font-size:14px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em;font-size:11px">Воронка CONTINUE — письмо после курса</div>
+  <div class="chart-card">
+    <h2>Первый системный механизм повторных покупок</h2>
+    <div class="chart-desc">«Поздравляем! Теперь самое важное — превратить прогресс в привычку» + промокод 20% на следующий курс</div>
+    <div class="kpi-grid-3" style="margin-bottom:14px">
+      <div class="kpi-card" style="text-align:center">
+        <div class="kpi-label">Месяц 1</div>
+        <div class="kpi-value">24</div>
+        <div class="kpi-sub">продажи</div>
+      </div>
+      <div class="kpi-card" style="text-align:center;border:2px solid #1A7A4A">
+        <div class="kpi-label">Месяц 2</div>
+        <div class="kpi-value green">54</div>
+        <div class="kpi-sub">продажи</div>
+      </div>
+      <div class="kpi-card" style="text-align:center;background:#F0FAF4">
+        <div class="kpi-label">Рост</div>
+        <div class="kpi-value green">+125%</div>
+        <div class="kpi-sub">за месяц</div>
+      </div>
+    </div>
+    <div class="note">Раньше повторные покупки происходили случайно — теперь управляем процессом. Продолжаем масштабировать.</div>
+  </div>
+
+  <!-- EMAIL RESULTS -->
+  <div style="font-size:11px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em">Результаты конкретных писем</div>
+  <div class="chart-card">
+    <h2>Топ письма по продажам</h2>
+    <div class="chart-desc">Отписки снизились до 24% — работают темы: спина, база тренировок, жиросжигание, акционные</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#F7F7F7;border-radius:8px;border-left:3px solid #0D0D0D">
+        <div>
+          <div style="font-size:13px;font-weight:600">«Wish list для твоего тела»</div>
+          <div style="font-size:11px;color:#888;margin-top:2px">сильный кор, рельеф, ягодицы, спина · промокод VISH20</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:22px;font-weight:600">24</div>
+          <div style="font-size:10px;color:#888">покупки</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#F7F7F7;border-radius:8px;border-left:3px solid #888">
+        <div>
+          <div style="font-size:13px;font-weight:600">«Твоя база для сильного тела»</div>
+          <div style="font-size:11px;color:#888;margin-top:2px">система тренировок</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:22px;font-weight:600">10</div>
+          <div style="font-size:10px;color:#888">покупки</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMO CODES -->
+  <div style="font-size:11px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em">Промокоды — 268 применений за период</div>
+  <div class="kpi-grid" style="margin-bottom:12px">
+    <div class="kpi-card" style="text-align:center;border-top:3px solid #0D0D0D">
+      <div class="kpi-label">CONTINUE</div>
+      <div class="kpi-value">78</div>
+      <div class="kpi-sub">Post-course email</div>
+    </div>
+    <div class="kpi-card" style="text-align:center;border-top:3px solid #378ADD">
+      <div class="kpi-label">UP20</div>
+      <div class="kpi-value">34</div>
+      <div class="kpi-sub">TG-бот welcome</div>
+    </div>
+    <div class="kpi-card" style="text-align:center;border-top:3px solid #E07040">
+      <div class="kpi-label">VISH20</div>
+      <div class="kpi-value">26</div>
+      <div class="kpi-sub">Email «Wish list»</div>
+    </div>
+    <div class="kpi-card" style="text-align:center;border-top:3px solid #888">
+      <div class="kpi-label">Threads + другие</div>
+      <div class="kpi-value">130</div>
+      <div class="kpi-sub">Threads: 13 · прочие</div>
+    </div>
+  </div>
+  <div class="note">CONTINUE — самый результативный: 78 из 268 применений (29%). Работает автоматически после завершения курса.</div>
+
+  <!-- FUNNEL EXPLANATION -->
+  <hr class="divider">
+  <div style="font-size:11px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em">Как работает воронка</div>
+  <div class="chart-card">
+    <h2>TG-бот и email — каналы прогрева, а не привлечения</h2>
+    <div class="chart-desc">Туда не купишь новый трафик. Но именно там люди покупают охотнее всего — потому что они уже тёплые</div>
+    <div class="funnel">
+      <div class="funnel-step" style="background:#F7F7F7;border:1px solid #E8E8E8">
+        <div class="funnel-label">Привлечение</div>
+        <div class="funnel-main">Instagram · Google</div>
+        <div class="funnel-note">Новый человек находит IRNBY · Конверсия 4–6%</div>
+      </div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step" style="background:#F0F7FF;border:1px solid #C5DDF7">
+        <div class="funnel-label">Прогрев</div>
+        <div class="funnel-main">TG-бот · Email</div>
+        <div class="funnel-note">Подписывается, читает, доверяет</div>
+      </div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step" style="background:#F0FAF4;border:1px solid #A8DFB8">
+        <div class="funnel-label" style="color:#1A7A4A">Покупка</div>
+        <div class="funnel-main">Конверсия 10–33%</div>
+        <div class="funnel-note">Каждый 3–10-й покупает</div>
+      </div>
+    </div>
+    <div class="note-yellow">Сейчас цепочка работает случайно. Если выстроить её системно — можно поднять конверсию без роста рекламного бюджета.</div>
+  </div>
+
+  <!-- THREADS -->
+  <div style="font-size:11px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em">Threads — новый канал</div>
+  <div class="kpi-grid-2">
+    <div class="box" style="margin-bottom:0">
+      <h3>Завели аккаунт и тестируем бартер</h3>
+      <p>Запустили присутствие в Threads — имиджевые выходы по бартеру с блогерами. Блогеры tt_a_i_s_ и heyimtanya_ публикуют личные истории с упоминанием IRNBY.</p>
+      <div class="note" style="margin-top:12px;font-style:italic">«Плакать из-за мужика ❌ Плакать, потому что не добрала белок ✅ — промокод на скидку 20%»</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="kpi-card" style="text-align:center">
+        <div class="kpi-label">Применений промокода</div>
+        <div class="kpi-value" style="font-size:28px">13</div>
+        <div class="kpi-sub">THREADS</div>
+      </div>
+      <div class="kpi-card" style="text-align:center">
+        <div class="kpi-label">Механика</div>
+        <div class="kpi-value" style="font-size:14px;line-height:1.4;margin-top:4px">Бартер + промокод в посте</div>
+        <div class="kpi-sub">Охват через личные истории</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================================= -->
+<!-- TAB 5: PR И SEO -->
+<!-- ======================================= -->
+<div id="tab-pr" class="tab-panel">
+  <div class="section-title">PR и SEO</div>
+  <div class="section-desc">Публикации в СМИ, органический контент и работа с поисковым трафиком</div>
+
+  <div class="kpi-grid-3" style="margin-bottom:24px">
+    <div class="kpi-card" style="text-align:center">
+      <div class="kpi-label">Опубликовано статей</div>
+      <div class="kpi-value green">3</div>
+      <div class="kpi-sub">МК ×2, Яндекс.Дзен ×1</div>
+    </div>
+    <div class="kpi-card" style="text-align:center">
+      <div class="kpi-label">В работе</div>
+      <div class="kpi-value">3</div>
+      <div class="kpi-sub">КП, VC, пресс-релиз</div>
+    </div>
+    <div class="kpi-card" style="text-align:center">
+      <div class="kpi-label">База журналистов</div>
+      <div class="kpi-value">30+</div>
+      <div class="kpi-sub">tier-1 медиа</div>
+    </div>
+  </div>
+
+  <div style="font-size:11px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em">Опубликовано</div>
+  <a href="https://www.mk-hakasia.ru/social/2026/03/10/lovushka-iz-vkusnyashek-pochemu-ideya-otkazatsya-ot-sladkogo-s-ponedelnika-obrechena-na-proval.html" target="_blank" class="article-card">
+    <div class="article-tag" style="color:#1A7A4A">Московский Комсомолец · 07.03</div>
+    <div class="article-title">Ловушка из вкусняшек: почему идея отказаться от сладкого с понедельника обречена на провал</div>
+    <div class="article-sub">Спикер: Екатерина Матыскина</div>
+  </a>
+  <a href="https://www.mk-lenobl.ru/social/2026/04/12/novichkamleningradcam-v-sporte-luchshe-orientirovatsya-na-legkoe-i-komfortnoe-kardio.html" target="_blank" class="article-card">
+    <div class="article-tag" style="color:#1A7A4A">Московский Комсомолец · 09.04</div>
+    <div class="article-title">Новичкам-ленинградцам в спорте лучше ориентироваться на лёгкое и комфортное кардио</div>
+    <div class="article-sub">Спикер: Татьяна</div>
+  </a>
+  <a href="https://docs.google.com/spreadsheets/d/1IahmuzUq4EwnsOHiCMAKGnWLjh5iJ3px43gtxIHIP0E/edit?usp=sharing" target="_blank" class="article-card">
+    <div class="article-tag" style="color:#1A7A4A">Яндекс.Дзен · 04.05</div>
+    <div class="article-title">«Пришла не за похудением, а чтобы снова почувствовать себя живой»</div>
+    <div class="article-sub">Отзыв Анны о IRNBY TC</div>
+  </a>
+
+  <hr class="divider">
+
+  <div style="font-size:11px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em">В работе</div>
+  <a href="https://docs.google.com/spreadsheets/d/1IahmuzUq4EwnsOHiCMAKGnWLjh5iJ3px43gtxIHIP0E/edit?usp=sharing" target="_blank" class="article-card" style="border-left:3px solid #D4890A;border-radius:0 10px 10px 0">
+    <div class="article-tag" style="color:#D4890A">Комсомольская Правда · 13.05</div>
+    <div class="article-title">Силовые тренировки для похудения — передано журналисту</div>
+  </a>
+  <a href="https://docs.google.com/spreadsheets/d/1IahmuzUq4EwnsOHiCMAKGnWLjh5iJ3px43gtxIHIP0E/edit?usp=sharing" target="_blank" class="article-card" style="border-left:3px solid #D4890A;border-radius:0 10px 10px 0">
+    <div class="article-tag" style="color:#D4890A">VC · в райтинге</div>
+    <div class="article-title">Тренер или ИИ: как искусственный интеллект меняет фитнес-индустрию</div>
+  </a>
+  <a href="https://docs.google.com/spreadsheets/d/1IahmuzUq4EwnsOHiCMAKGnWLjh5iJ3px43gtxIHIP0E/edit?usp=sharing" target="_blank" class="article-card" style="border-left:3px solid #888;border-radius:0 10px 10px 0">
+    <div class="article-tag" style="color:#888">Пресс-релиз · питчинг продолжается</div>
+    <div class="article-title">«Россиянки перестали худеть к лету» — готов, ищем площадку</div>
+  </a>
+
+  <hr class="divider">
+
+  <div style="font-size:11px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em">Органический контент</div>
+  <div class="kpi-grid-2">
+    <div class="box" style="border-left:3px solid #1A7A4A;border-radius:0 12px 12px 0;margin-bottom:0">
+      <div style="font-size:10px;color:#1A7A4A;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Яндекс.Дзен · 23 апреля</div>
+      <h3 style="font-size:14px">«Инвестиция в себя: как изменился спортивный выбор российских женщин»</h3>
+      <p style="margin-top:8px">Экспертный материал от IRNBY на основе собственных данных. Позиционирование бренда как голоса рынка.</p>
+    </div>
+    <div class="box" style="border-left:3px solid #378ADD;border-radius:0 12px 12px 0;margin-bottom:0">
+      <div style="font-size:10px;color:#378ADD;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Пикабу · органический отзыв · 2 600 просмотров</div>
+      <h3 style="font-size:14px">«Честно, я не самый примерный спортсмен»</h3>
+      <p style="margin-top:8px">Пользователь ghostmilka4 написала отзыв: «пропускала тренировки, но всё равно минус 3,5 кг». 2 600 просмотров органически.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div style="font-size:11px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em">SEO</div>
+  <div class="kpi-grid-3">
+    <div class="kpi-card">
+      <div class="kpi-label">Органика Google</div>
+      <div class="kpi-value green" style="font-size:22px">6,49%</div>
+      <div class="kpi-sub">конверсия — лучший платный канал проигрывает вдвое</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Покупок с SEO</div>
+      <div class="kpi-value" style="font-size:22px">2 117</div>
+      <div class="kpi-sub">без рекламных затрат за период</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Рост трафика</div>
+      <div class="kpi-value" style="font-size:22px">+ 2 мес</div>
+      <div class="kpi-sub">наняли SEO-специалиста в апреле</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================================= -->
+<!-- TAB 6: АУДИТОРИЯ -->
+<!-- ======================================= -->
+<div id="tab-audience" class="tab-panel">
+  <div class="section-title">Аудитория</div>
+  <div class="section-desc">Что показывает Яндекс.Метрика о наших покупателях и поведении на сайте</div>
+
+  <div class="insight-grid">
+    <div class="insight-card bad">
+      <div class="insight-label">Директ — люди уходят за 1 мин 15 сек</div>
+      <div class="insight-value" style="font-size:16px">Неправильная аудитория</div>
+      <div class="insight-body">Google органика держит людей 3м37с, приложение — 4м04с. Директ — 1м15с. Объявления привлекают тех, кто ещё не готов покупать</div>
+    </div>
+    <div class="insight-card bad">
+      <div class="insight-label">Новые посетители упали на 29%</div>
+      <div class="insight-value" style="font-size:16px">Воронка сужается</div>
+      <div class="insight-body">87,5 тыс визитов ▼ -29%. Верхушка воронки сжимается — меньше новых людей узнаёт об IRNBY. Возвращающиеся упали лишь на 9%</div>
+    </div>
+    <div class="insight-card good">
+      <div class="insight-label">Анастасия Миронова — поисковый актив</div>
+      <div class="insight-value" style="font-size:16px">Личный бренд работает</div>
+      <div class="insight-body">В Яндексе видны запросы «миронова фитнес курсы», «my mission mironova». Люди ищут по имени — трафик можно усиливать через личный контент</div>
+    </div>
+    <div class="insight-card good">
+      <div class="insight-label">Email-кампании — лучший результат</div>
+      <div class="insight-value" style="font-size:16px">18–33% конверсия</div>
+      <div class="insight-body">UTM-метки email-сервиса показывают конверсию 18–33%. Это лучший показатель по всем каналам при минимальных затратах</div>
+    </div>
+    <div class="insight-card mid">
+      <div class="insight-label">Главная страница — не главный вход</div>
+      <div class="insight-value" style="font-size:16px">/courses — 109,7 тыс просмотров</div>
+      <div class="insight-body">Каталог курсов смотрят в 1,5 раза чаще главной. Люди идут сразу за курсами — именно эта страница должна продавать</div>
+    </div>
+    <div class="insight-card mid">
+      <div class="insight-label">Весь трафик — со смартфонов</div>
+      <div class="insight-value" style="font-size:16px">121,5 тыс ▼ -24%</div>
+      <div class="insight-body">Почти все заходят с телефона, и этот трафик падает. Если воронка неудобна на мобильном — теряем покупателей именно там</div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <h3>Ключевой вывод по аудитории</h3>
+    <p>Ядро покупателей — женщины 25–34 лет, конверсия 5,39%, 1 313 покупок, 535 тыс ₽ выручки. Следующий по размеру сегмент — женщины 18–24. Весь маркетинг должен быть заточен под женскую аудиторию 18–44 лет.</p>
+    <div class="tags">
+      <span class="tag green">приоритет: женщины 25–34</span>
+      <span class="tag gray">второй: женщины 18–24</span>
+      <span class="tag gray">растить: женщины 35–44</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================================= -->
+<!-- TAB 7: АНАЛИЗ -->
+<!-- ======================================= -->
+<div id="tab-analysis" class="tab-panel">
+  <div class="section-title">Почему упали продажи</div>
+  <div class="section-desc">Продажи снизились в апреле. Это не одна причина, а три — разберём каждую</div>
+
+  <div class="box">
+    <h3>Причина 1 — Сезонность</h3>
+    <p>Январь всегда сильный: новогодние решения, высокая мотивация. Февраль и март держались за счёт праздников — 14 февраля дало +123% к предыдущему периоду, 8 марта стало рекордом. Апрель — традиционно слабый месяц в фитнесе: после праздников, до лета. Это отраслевой паттерн, не наша вина.</p>
+  </div>
+
+  <div class="box">
+    <h3>Причина 2 — Снижение эффективности рекламы</h3>
+    <p>ROI упал с 7,86 в январе до 4,87 в апреле (-38%). Доля рекламных расходов выросла с 11% до 17%. Тратим столько же — получаем всё меньше. Апрельская акция дала 295 продаж против 753 в феврале при том же механике. Аудитория устала от одинаковых предложений.</p>
+  </div>
+
+  <div class="box accent-black">
+    <h3>Главная причина — структурная модель</h3>
+    <p>Выручка держится на акциях и праздниках. Когда праздника нет — продаж почти нет. У нас нет механизма, который генерирует доход между акциями: нет подписки, нет регулярного продукта, нет автоматической работы с тёплой базой. 30,9% повторных покупок — хороший показатель, но люди возвращаются сами, не по системе.</p>
+    <div class="note" style="margin-top:16px"><strong>Задача следующего этапа:</strong> выстроить систему, которая продаёт и без праздников — через email-воронки, прогрев базы и SEO.</div>
+  </div>
+
+  <div class="verdict" style="margin-top:20px">
+    <h3>Вывод: маркетинг виноват частично</h3>
+    <p>Сезонность — внешний фактор. Снижение ROI — сигнал, что нужно обновлять механики. Но главное — структурная проблема: бизнес-модель без повторяющегося дохода. Email-воронка (+125% за 2 месяца) — уже первый шаг к решению.</p>
+    <div class="tags">
+      <span class="tag gray">сезонность → ожидаемо, учитывать в планах</span>
+      <span class="tag yellow">реклама → обновить механики, сузить Директ</span>
+      <span class="tag green">модель → email-воронка уже работает, масштабировать</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  IRNBY Training Club &nbsp;·&nbsp; Маркетинговый отчёт &nbsp;·&nbsp; Январь–Апрель 2026<br>
+  Подготовлено: Лиана Базгутдинова &nbsp;·&nbsp; Май 2026
+</div>
+
+<script>
+// TAB SWITCHING
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+  // init charts lazily
+  if (name === 'channels' && !window._chartsChannels) initChannelCharts();
+  if (name === 'search'   && !window._chartsSearch)   initSearchChart();
+}
+
+const textColor = 'rgba(0,0,0,0.4)';
+const gridColor = 'rgba(0,0,0,0.07)';
+
+// Channel charts
+function initChannelCharts() {
+  window._chartsChannels = true;
+  new Chart(document.getElementById('buysChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Instagram','Google','Яндекс.Директ','TG-бот','Telegram','Email'],
+      datasets: [
+        { label: 'Покупки', data: [2142,2117,811,225,80,27], backgroundColor: '#378ADD', borderRadius: 5, yAxisID: 'y' },
+        { label: 'Выручка (тыс ₽)', data: [558,756,444,72.5,37.3,11.8], backgroundColor: '#97C459', borderRadius: 5, yAxisID: 'y2' }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { font: { size: 12 }, color: '#555' } } },
+      scales: {
+        x: { ticks: { color: textColor, font: { size: 11 } }, grid: { display: false } },
+        y: { ticks: { color: textColor, font: { size: 11 } }, grid: { color: gridColor }, title: { display: true, text: 'покупки', color: textColor, font: { size: 10 } } },
+        y2: { position: 'right', ticks: { color: textColor, font: { size: 11 } }, grid: { display: false }, title: { display: true, text: 'тыс ₽', color: textColor, font: { size: 10 } } }
+      }
+    }
+  });
+  new Chart(document.getElementById('convChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Email','TG-бот','Google','Instagram','Яндекс.Директ'],
+      datasets: [{
+        label: '% конверсии',
+        data: [11.9, 10.5, 6.48, 4.50, 1.31],
+        backgroundColor: ['#1D9E75','#1D9E75','#1D9E75','#378ADD','#E24B4A'],
+        borderRadius: 5
+      }]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: textColor, font: { size: 12 }, callback: v => v + '%' }, grid: { color: gridColor } },
+        y: { ticks: { color: textColor, font: { size: 12 } }, grid: { display: false } }
+      }
+    }
+  });
+}
+
+// Search chart
+function initSearchChart() {
+  window._chartsSearch = true;
+  new Chart(document.getElementById('searchChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Google', 'Яндекс'],
+      datasets: [
+        { label: 'Визиты', data: [13312, 3460], backgroundColor: '#B5D4F4', borderRadius: 5, yAxisID: 'y' },
+        { label: 'Покупки', data: [2117, 381], backgroundColor: '#378ADD', borderRadius: 5, yAxisID: 'y' },
+        { label: 'Выручка (тыс ₽)', data: [755.8, 145.5], backgroundColor: '#97C459', borderRadius: 5, yAxisID: 'y2' }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { font: { size: 12 }, color: '#555' } } },
+      scales: {
+        x: { ticks: { color: textColor, font: { size: 13 } }, grid: { display: false } },
+        y: { ticks: { color: textColor, font: { size: 11 } }, grid: { color: gridColor } },
+        y2: { position: 'right', ticks: { color: textColor, font: { size: 11 }, callback: v => v + ' тыс' }, grid: { display: false } }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
