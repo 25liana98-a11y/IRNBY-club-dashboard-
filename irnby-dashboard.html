@@ -187,13 +187,14 @@ a.article-card::after{content:' ↗';font-size:11px;color:#AAA}
 <div class="period-bar">
   <div style="max-width:960px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
     <span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-right:4px">Период:</span>
-    <button class="period-btn active" onclick="setPeriod('all',this)">Янв–Май</button>
+    <button class="period-btn active" onclick="setPeriod('all',this)">Янв–Июнь</button>
     <button class="period-btn" onclick="setPeriod('jan',this)">Январь</button>
     <button class="period-btn" onclick="setPeriod('feb',this)">Февраль</button>
     <button class="period-btn" onclick="setPeriod('mar',this)">Март</button>
     <button class="period-btn" onclick="setPeriod('apr',this)">Апрель</button>
+    <button class="period-btn" onclick="setPeriod('may',this)">Май</button>
     <span style="font-size:11px;color:#CCC;margin:0 4px">|</span>
-    <button class="period-btn" onclick="setPeriod('may',this)" style="border:1px solid #1A7A4A;color:#1A7A4A;background:#F0FAF4">Май ✦</button>
+    <button class="period-btn" onclick="setPeriod('jun',this)" style="border:1px solid #1A7A4A;color:#1A7A4A;background:#F0FAF4">Июнь ✦</button>
   </div>
 </div>
 
@@ -284,6 +285,30 @@ a.article-card::after{content:' ↗';font-size:11px;color:#AAA}
     </tbody></table></div>
   </div>
 
+  <div class="period-section" data-period="jun">
+    <div class="section-title">Июнь 2026</div><div class="section-desc">01.06–30.06 · Яндекс.Метрика + UTM + Unisender</div>
+    <div class="metric-grid"><div class="metric-card"><div class="metric-label">Расходы</div><div class="metric-value">25 100 ₽</div><div class="metric-sub">Директ (Метрика)</div></div><div class="metric-card"><div class="metric-label">Визиты</div><div class="metric-value down">17 500</div><div class="metric-sub">Посетители: 13 100 (−5,1%)</div></div><div class="metric-card"><div class="metric-label">Конверсия</div><div class="metric-value">4,02%</div><div class="metric-sub">−0,3 п.п. к маю</div></div><div class="metric-card"><div class="metric-label">Достижения целей</div><div class="metric-value down">1 861</div><div class="metric-sub">−9,1% к маю</div></div></div>
+    <div class="metric-grid-3"><div class="metric-card"><div class="metric-label">Время на сайте</div><div class="metric-value">2:22</div><div class="metric-sub">−1,85% к маю</div></div><div class="metric-card"><div class="metric-label">Отказы</div><div class="metric-value">28,36%</div><div class="metric-sub">+0,42 п.п. к маю</div></div><div class="metric-card"><div class="metric-label">Глубина</div><div class="metric-value">2,55</div><div class="metric-sub">−4,41%</div></div></div>
+    <div class="chart-card"><h2>Источники трафика · Июнь</h2><div class="chart-desc">Прямые заходы снова лидируют (5 546). Соцсети и поиск — примерно одинаковый объём (~3 тыс каждый)</div>
+    <div style="position:relative;height:220px"><canvas id="srcChartJun"></canvas></div></div>
+    <div class="note">Новые: 12 100 · Вернувшиеся: 2 715 · Просмотры: 44 900</div>
+    <hr class="divider">
+    <div style="font-size:15px;font-weight:600;margin-bottom:6px">UTM-конверсии · Июнь</div>
+    <div style="font-size:13px;color:#888;margin-bottom:14px">114 целевых визитов с UTM · Доход по избранным целям: 337 536 ₽ · Метрика</div>
+    <div class="table-wrap"><table><thead><tr><th>Источник</th><th>Цел. визиты</th><th>Достижений</th><th>Доход (Метрика)</th><th>Конв.</th></tr></thead><tbody>
+      <tr><td class="channel-name">Unisender (email)</td><td>36</td><td>38</td><td>90 885 ₽</td><td class="conv-high">3,72%</td></tr>
+      <tr><td class="channel-name">tg (Telegram)</td><td>25</td><td>25</td><td>70 200 ₽</td><td class="conv-high">2,76%</td></tr>
+      <tr><td class="channel-name">yandex (Директ)</td><td>21</td><td>24</td><td>63 360 ₽</td><td>1,95%</td></tr>
+      <tr><td class="channel-name">ig (Instagram реклама)</td><td>20</td><td>23</td><td>75 591 ₽</td><td>1,17%</td></tr>
+      <tr><td class="channel-name">inst (Instagram органика)</td><td>3</td><td>4</td><td>8 400 ₽</td><td>0,88%</td></tr>
+      <tr><td class="channel-name">ohmywishes</td><td>3</td><td>3</td><td>8 400 ₽</td><td>0,52%</td></tr>
+      <tr><td class="channel-name">irnby_store</td><td>2</td><td>2</td><td>7 200 ₽</td><td>0,44%</td></tr>
+      <tr><td class="channel-name">vk</td><td>2</td><td>3</td><td>7 620 ₽</td><td>0,38%</td></tr>
+      <tr><td><strong>Итого (UTM)</strong></td><td><strong>114</strong></td><td><strong>124</strong></td><td><strong>337 536 ₽</strong></td><td>1,73%</td></tr>
+    </tbody></table></div>
+    <div class="note-yellow">Общая выручка июня из CRM — ожидается (отчёт Яндекс.Директ в обработке). Данные по Метрике отражают только UTM-трекинг покупок.</div>
+  </div>
+
   <hr class="divider">
   <div class="section-title" style="font-size:17px;margin-bottom:6px">Сводные KPI Январь–Апрель (финансы)</div>
   <div class="section-desc">Финансовые данные за 4 месяца · трафик в графике выше — с учётом мая</div>
@@ -297,8 +322,10 @@ a.article-card::after{content:' ↗';font-size:11px;color:#AAA}
 
 <!-- ===== КАНАЛЫ ===== -->
 <div id="tab-channels" class="tab-panel">
+
+  <div class="period-section active" data-period="all">
   <div class="section-title">Каналы продаж</div>
-  <div class="section-desc">Покупки, выручка и конверсия · январь–апрель 2026</div>
+  <div class="section-desc">Покупки, выручка и конверсия · январь–май 2026</div>
   <div class="table-wrap">
     <table><thead><tr><th>Канал</th><th>Визиты</th><th>Конверсия</th><th>Покупки</th><th>Выручка</th><th>Заметка</th></tr></thead>
     <tbody>
@@ -318,6 +345,136 @@ a.article-card::after{content:' ↗';font-size:11px;color:#AAA}
     <div class="insight-card bad"><div class="insight-label">Самый дорогой и слабый</div><div class="insight-value">Яндекс.Директ</div><div class="insight-body">186,7 тыс расходов при 1,31% конверсии</div></div>
     <div class="insight-card warn"><div class="insight-label">Скрытый потенциал</div><div class="insight-value">Email + TG-бот</div><div class="insight-body">Конверсия 10–12%. Нужно наращивать трафик</div></div>
   </div>
+  </div>
+
+  <div class="period-section" data-period="jan">
+    <div class="section-title">Январь 2026</div>
+    <div class="section-desc">01.01–31.01 · Яндекс.Метрика + Excel/CRM</div>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="metric-label">Выручка</div><div class="metric-value">11,2 млн ₽</div><div class="metric-sub">ROI 7,86</div></div>
+      <div class="metric-card"><div class="metric-label">Визиты</div><div class="metric-value">31 800</div><div class="metric-sub">Посетители: 25 200</div></div>
+      <div class="metric-card"><div class="metric-label">Достижения</div><div class="metric-value">2 952</div><div class="metric-sub">Конверсия 4,65%</div></div>
+      <div class="metric-card"><div class="metric-label">Расходы</div><div class="metric-value">36 600 ₽</div><div class="metric-sub">Яндекс.Директ</div></div>
+    </div>
+    <div style="font-size:15px;font-weight:600;margin:16px 0 6px">Покупки по каналам · январь</div>
+    <div style="font-size:13px;color:#888;margin-bottom:12px">Каналы с помесячными данными (Excel/CRM)</div>
+    <div class="table-wrap"><table><thead><tr><th>Канал</th><th>Покупки</th><th>Заметка</th></tr></thead><tbody>
+      <tr><td class="channel-name">Яндекс.Директ</td><td>110</td><td>Контекстная реклама</td></tr>
+      <tr><td class="channel-name">TG-бот</td><td>34</td><td>Горячая аудитория</td></tr>
+      <tr><td class="channel-name">Email (Unisender)</td><td>30</td><td>Рассылки</td></tr>
+      <tr><td class="channel-name">Influence (блогеры)</td><td>29</td><td>Instagram-кампании</td></tr>
+    </tbody></table></div>
+    <div class="note">Instagram и Google органика: помесячных данных нет — только суммарно за янв–апр (4 259 покупок)</div>
+  </div>
+
+  <div class="period-section" data-period="feb">
+    <div class="section-title">Февраль 2026</div>
+    <div class="section-desc">01.02–28.02 · Яндекс.Метрика + Excel/CRM</div>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="metric-label">Выручка</div><div class="metric-value">9,2 млн ₽</div><div class="metric-sub">ROI 5,96</div></div>
+      <div class="metric-card"><div class="metric-label">Визиты</div><div class="metric-value up">40 600</div><div class="metric-sub">Пик за период</div></div>
+      <div class="metric-card"><div class="metric-label">Достижения</div><div class="metric-value up">3 161</div><div class="metric-sub">Конверсия 3,76%</div></div>
+      <div class="metric-card"><div class="metric-label">Расходы</div><div class="metric-value down">60 200 ₽</div><div class="metric-sub">↑ максимум за период</div></div>
+    </div>
+    <div style="font-size:15px;font-weight:600;margin:16px 0 6px">Покупки по каналам · февраль</div>
+    <div style="font-size:13px;color:#888;margin-bottom:12px">Email-рекорд: 76 покупок — лучший месяц по рассылкам</div>
+    <div class="table-wrap"><table><thead><tr><th>Канал</th><th>Покупки</th><th>Заметка</th></tr></thead><tbody>
+      <tr><td class="channel-name">Яндекс.Директ</td><td class="conv-high">145</td><td>Лучший месяц Директа</td></tr>
+      <tr><td class="channel-name">Email (Unisender)</td><td class="conv-high">76</td><td>Рекорд рассылок</td></tr>
+      <tr><td class="channel-name">Influence (блогеры)</td><td>10</td><td>Instagram-кампании</td></tr>
+      <tr><td class="channel-name">TG-бот</td><td>5</td><td>Низкая активность</td></tr>
+    </tbody></table></div>
+    <div class="note">Instagram и Google органика: помесячных данных нет — только суммарно за янв–апр (4 259 покупок)</div>
+  </div>
+
+  <div class="period-section" data-period="mar">
+    <div class="section-title">Март 2026</div>
+    <div class="section-desc">01.03–31.03 · Яндекс.Метрика + Excel/CRM</div>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="metric-label">Выручка</div><div class="metric-value">10,2 млн ₽</div><div class="metric-sub">ROI 6,55</div></div>
+      <div class="metric-card"><div class="metric-label">Визиты</div><div class="metric-value">29 000</div><div class="metric-sub">Посетители: 21 800</div></div>
+      <div class="metric-card"><div class="metric-label">Достижения</div><div class="metric-value">2 374</div><div class="metric-sub">Конверсия 3,66%</div></div>
+      <div class="metric-card"><div class="metric-label">Расходы</div><div class="metric-value">47 200 ₽</div><div class="metric-sub">Яндекс.Директ</div></div>
+    </div>
+    <div style="font-size:15px;font-weight:600;margin:16px 0 6px">Покупки по каналам · март</div>
+    <div style="font-size:13px;color:#888;margin-bottom:12px">Influence-пик: 21 покупка — активная работа с блогерами</div>
+    <div class="table-wrap"><table><thead><tr><th>Канал</th><th>Покупки</th><th>Заметка</th></tr></thead><tbody>
+      <tr><td class="channel-name">Яндекс.Директ</td><td>92</td><td>Контекстная реклама</td></tr>
+      <tr><td class="channel-name">Email (Unisender)</td><td>38</td><td>Рассылки</td></tr>
+      <tr><td class="channel-name">Influence (блогеры)</td><td class="conv-high">21</td><td>Пик по инфлюенсерам</td></tr>
+      <tr><td class="channel-name">TG-бот</td><td>11</td><td>TG-бот / приложение</td></tr>
+    </tbody></table></div>
+    <div class="note">Instagram и Google органика: помесячных данных нет — только суммарно за янв–апр (4 259 покупок)</div>
+  </div>
+
+  <div class="period-section" data-period="apr">
+    <div class="section-title">Апрель 2026</div>
+    <div class="section-desc">01.04–30.04 · Яндекс.Метрика + Excel/CRM</div>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="metric-label">Выручка</div><div class="metric-value down">7,6 млн ₽</div><div class="metric-sub">ROI 4,87 ↓</div></div>
+      <div class="metric-card"><div class="metric-label">Визиты</div><div class="metric-value down">20 200</div><div class="metric-sub">Посетители: 15 400</div></div>
+      <div class="metric-card"><div class="metric-label">Достижения</div><div class="metric-value">2 287</div><div class="metric-sub">Конверсия 4,54%</div></div>
+      <div class="metric-card"><div class="metric-label">Расходы</div><div class="metric-value">42 800 ₽</div><div class="metric-sub">Яндекс.Директ</div></div>
+    </div>
+    <div style="font-size:15px;font-weight:600;margin:16px 0 6px">Покупки по каналам · апрель</div>
+    <div style="font-size:13px;color:#888;margin-bottom:12px">Тихий месяц — все каналы снизились относительно пика</div>
+    <div class="table-wrap"><table><thead><tr><th>Канал</th><th>Покупки</th><th>Заметка</th></tr></thead><tbody>
+      <tr><td class="channel-name">Яндекс.Директ</td><td>103</td><td>Контекстная реклама</td></tr>
+      <tr><td class="channel-name">Email (Unisender)</td><td>42</td><td>Рассылки</td></tr>
+      <tr><td class="channel-name">TG-бот</td><td>13</td><td>TG-бот / приложение</td></tr>
+      <tr><td class="channel-name">Influence (блогеры)</td><td>13</td><td>Instagram-кампании</td></tr>
+    </tbody></table></div>
+    <div class="note">Instagram и Google органика: помесячных данных нет — только суммарно за янв–апр (4 259 покупок)</div>
+  </div>
+
+  <div class="period-section" data-period="may">
+    <div class="section-title">Май 2026</div>
+    <div class="section-desc">01.05–31.05 · Яндекс.Метрика UTM</div>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="metric-label">Выручка</div><div class="metric-value down">6,4 млн ₽</div><div class="metric-sub">ДРР 20,23%</div></div>
+      <div class="metric-card"><div class="metric-label">Визиты</div><div class="metric-value down">19 100</div><div class="metric-sub">Посетители: 14 500</div></div>
+      <div class="metric-card"><div class="metric-label">Достижения</div><div class="metric-value">2 048</div><div class="metric-sub">Конверсия 4,32%</div></div>
+      <div class="metric-card"><div class="metric-label">Расходы</div><div class="metric-value">44 700 ₽</div><div class="metric-sub">Яндекс.Директ</div></div>
+    </div>
+    <div style="font-size:15px;font-weight:600;margin:16px 0 6px">UTM-источники · май</div>
+    <div style="font-size:13px;color:#888;margin-bottom:12px">10 363 визита с UTM-меткой из 19 100 общих · Метрика</div>
+    <div class="table-wrap"><table><thead><tr><th>Канал</th><th>Визиты</th><th>Достижений</th><th>Доход</th><th>Конв.</th></tr></thead><tbody>
+      <tr><td class="channel-name">ig (Instagram реклама)</td><td>3 577</td><td>292</td><td>187 200 ₽</td><td class="conv-high">8,2%</td></tr>
+      <tr><td class="channel-name">yandex (Директ)</td><td>2 548</td><td>164</td><td>126 720 ₽</td><td>6,4%</td></tr>
+      <tr><td class="channel-name">inst (Instagram органика)</td><td>1 698</td><td>93</td><td>39 696 ₽</td><td>5,5%</td></tr>
+      <tr><td class="channel-name">Unisender (Email)</td><td>1 184</td><td class="conv-high">228</td><td>175 185 ₽</td><td class="conv-high">19,3%</td></tr>
+      <tr><td class="channel-name">irnby_store</td><td>420</td><td>23</td><td>18 999 ₽</td><td>5,5%</td></tr>
+      <tr><td class="channel-name">tg_bot (TG-бот)</td><td>327</td><td>37</td><td>33 600 ₽</td><td class="conv-high">11,3%</td></tr>
+      <tr><td class="channel-name">tg (Telegram)</td><td>347</td><td>14</td><td>11 100 ₽</td><td>4,0%</td></tr>
+      <tr><td><strong>Итого UTM</strong></td><td><strong>10 363</strong></td><td><strong>873</strong></td><td><strong>612 180 ₽</strong></td><td><strong>8,4%</strong></td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="period-section" data-period="jun">
+    <div class="section-title">Июнь 2026</div>
+    <div class="section-desc">01.06–30.06 · Яндекс.Метрика UTM + Unisender</div>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="metric-label">Выручка (CRM)</div><div class="metric-value" style="font-size:20px;color:#888">Ожидается</div><div class="metric-sub">отчёт Директа в обработке</div></div>
+      <div class="metric-card"><div class="metric-label">Визиты</div><div class="metric-value down">17 500</div><div class="metric-sub">Посетители: 13 100</div></div>
+      <div class="metric-card"><div class="metric-label">Достижения</div><div class="metric-value down">1 861</div><div class="metric-sub">Конверсия 4,02%</div></div>
+      <div class="metric-card"><div class="metric-label">Расходы</div><div class="metric-value">25 100 ₽</div><div class="metric-sub">Яндекс.Директ (Метрика)</div></div>
+    </div>
+    <div style="font-size:15px;font-weight:600;margin:16px 0 6px">UTM-конверсии · Июнь</div>
+    <div style="font-size:13px;color:#888;margin-bottom:12px">114 целевых визитов с UTM · доход по избранным целям Метрики: 337 536 ₽</div>
+    <div class="table-wrap"><table><thead><tr><th>Источник</th><th>Цел. визиты</th><th>Достижений</th><th>Доход (Метрика)</th><th>Конв.</th></tr></thead><tbody>
+      <tr><td class="channel-name">Unisender (Email)</td><td>36</td><td>38</td><td>90 885 ₽</td><td class="conv-high">3,72%</td></tr>
+      <tr><td class="channel-name">tg (Telegram)</td><td>25</td><td>25</td><td>70 200 ₽</td><td class="conv-high">2,76%</td></tr>
+      <tr><td class="channel-name">yandex (Директ)</td><td>21</td><td>24</td><td>63 360 ₽</td><td>1,95%</td></tr>
+      <tr><td class="channel-name">ig (Instagram реклама)</td><td>20</td><td>23</td><td>75 591 ₽</td><td>1,17%</td></tr>
+      <tr><td class="channel-name">inst (Instagram органика)</td><td>3</td><td>4</td><td>8 400 ₽</td><td>0,88%</td></tr>
+      <tr><td class="channel-name">ohmywishes</td><td>3</td><td>3</td><td>8 400 ₽</td><td>0,52%</td></tr>
+      <tr><td class="channel-name">irnby_store</td><td>2</td><td>2</td><td>7 200 ₽</td><td>0,44%</td></tr>
+      <tr><td class="channel-name">vk</td><td>2</td><td>3</td><td>7 620 ₽</td><td>0,38%</td></tr>
+      <tr><td><strong>Итого UTM</strong></td><td><strong>114</strong></td><td><strong>124</strong></td><td><strong>337 536 ₽</strong></td><td>1,73%</td></tr>
+    </tbody></table></div>
+    <div class="note-yellow">Email лидирует по конверсии среди UTM-источников (3,72%). Telegram показывает сильный рост — 2,76% при 25 визитах. Данные UTM отражают только трекинговый трафик, не полный объём покупок.</div>
+  </div>
+
 </div>
 
 <!-- ===== ПОИСК ===== -->
@@ -376,7 +533,8 @@ a.article-card::after{content:' ↗';font-size:11px;color:#AAA}
 
   <div class="email-month-tabs">
     <button class="em-btn" onclick="showEmailMonth('apr-email',this)">Апрель</button>
-    <button class="em-btn active" onclick="showEmailMonth('may-email',this)">Май ✦</button>
+    <button class="em-btn" onclick="showEmailMonth('may-email',this)">Май</button>
+    <button class="em-btn active" onclick="showEmailMonth('jun-email',this)">Июнь ✦</button>
     <button class="em-btn" onclick="showEmailMonth('funnel-email',this)">Воронка и промо</button>
   </div>
 
@@ -407,7 +565,7 @@ a.article-card::after{content:' ↗';font-size:11px;color:#AAA}
   </div>
 
   <!-- МАЙ EMAIL -->
-  <div id="may-email" class="period-section active">
+  <div id="may-email" class="period-section">
     <div style="font-size:11px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em">Май 2026 — показатели канала</div>
     <div class="kpi-grid" style="margin-bottom:8px">
       <div class="kpi-card"><div class="kpi-label">Отправлено</div><div class="kpi-value" style="font-size:22px">567 036</div><div class="kpi-sub">−28% к апрелю</div></div>
@@ -494,6 +652,73 @@ a.article-card::after{content:' ↗';font-size:11px;color:#AAA}
       <h2>Открываемость по типам рассылки · Май</h2>
       <div class="chart-desc">Сегментные рассылки (~20K базы) показывают 33–47%. Массовые (~70K) — 11–13%. Закономерность: чем меньше база, тем выше вовлечение.</div>
       <div style="position:relative;height:280px"><canvas id="mayOpenChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ИЮНЬ EMAIL -->
+  <div id="jun-email" class="period-section active">
+    <div style="font-size:11px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em">Июнь 2026 — показатели канала</div>
+    <div class="kpi-grid" style="margin-bottom:8px">
+      <div class="kpi-card"><div class="kpi-label">Отправлено</div><div class="kpi-value" style="font-size:22px">817 111</div><div class="kpi-sub">+44% к маю · 11 рассылок</div></div>
+      <div class="kpi-card"><div class="kpi-label">Прочтений</div><div class="kpi-value" style="font-size:22px">131 663</div><div class="kpi-sub">Open Rate 13% (−4% к маю)</div></div>
+      <div class="kpi-card"><div class="kpi-label">Доставляемость</div><div class="kpi-value green" style="font-size:22px">99,9%</div><div class="kpi-sub">стабильно</div></div>
+      <div class="kpi-card"><div class="kpi-label">Отписки</div><div class="kpi-value" style="font-size:22px">951</div><div class="kpi-sub">+26% к маю · рост объёма</div></div>
+    </div>
+    <div class="note" style="margin-bottom:8px">Переходов по ссылкам: 2 052 (0,3%) · Уникальных кликов: 1 397 · Жалоб на спам: 37</div>
+    <div class="note" style="margin-bottom:20px;background:#FFF8E8;border:1px solid #F0D888;color:#7A5C00">Объём вырос на 44% (SUMMER SALE + беговой марафон). Open rate снизился до 13% — плановое снижение при росте охвата. Отписки в норме: 0,1% от базы.</div>
+
+    <div style="font-size:11px;font-weight:600;margin-bottom:12px;color:#888;text-transform:uppercase;letter-spacing:.06em">Топ-рассылки июня</div>
+
+    <div class="email-card" style="border-left:3px solid #378ADD">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div><div style="font-size:10px;color:#378ADD;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">🔗 Лидер по переходам</div>
+        <div style="font-size:14px;font-weight:600">«Идеальный пресс — стартуем 6 июля»</div>
+        <div style="font-size:12px;color:#666;margin-top:2px">30 июня · 76 068 отправлено</div></div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px"><div style="font-size:22px;font-weight:700;color:#378ADD">352</div><div style="font-size:10px;color:#888">перехода</div></div>
+      </div>
+      <div class="email-stats"><div class="email-stat"><strong>11%</strong>open rate</div><div class="email-stat"><strong>8 729</strong>прочтений</div><div class="email-stat"><strong>76 046</strong>доставлено</div></div>
+    </div>
+
+    <div class="email-card" style="border-left:3px solid #1A7A4A">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div><div style="font-size:10px;color:#1A7A4A;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">📢 Запуск марафона</div>
+        <div style="font-size:14px;font-weight:600">«Узнай, что ждёт тебя в июньском марафоне»</div>
+        <div style="font-size:12px;color:#666;margin-top:2px">3 июня · 75 097 отправлено</div></div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px"><div style="font-size:22px;font-weight:700;color:#1A7A4A">299</div><div style="font-size:10px;color:#888">переходов</div></div>
+      </div>
+      <div class="email-stats"><div class="email-stat"><strong>12%</strong>open rate</div><div class="email-stat"><strong>8 815</strong>прочтений</div><div class="email-stat"><strong>74 996</strong>доставлено</div></div>
+    </div>
+
+    <div class="email-card" style="border-left:3px solid #E07040">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div><div style="font-size:10px;color:#E07040;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">🔥 SUMMER SALE −20%</div>
+        <div style="font-size:14px;font-weight:600">«SUMMER SALE! −20% на все курсы»</div>
+        <div style="font-size:12px;color:#666;margin-top:2px">10 июня · 74 601 отправлено</div></div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px"><div style="font-size:22px;font-weight:700;color:#E07040">206</div><div style="font-size:10px;color:#888">переходов</div></div>
+      </div>
+      <div class="email-stats"><div class="email-stat"><strong>12%</strong>open rate</div><div class="email-stat"><strong>9 069</strong>прочтений</div><div class="email-stat"><strong>74 530</strong>доставлено</div></div>
+    </div>
+
+    <div class="email-card" style="border-left:3px solid #888">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div><div style="font-size:10px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">📍 Реактивация 2024</div>
+        <div style="font-size:14px;font-weight:600">«Остаться нельзя прощаться»</div>
+        <div style="font-size:12px;color:#666;margin-top:2px">4 июня · 13 709 отправлено · когорта 2024</div></div>
+        <div style="text-align:right;flex-shrink:0;margin-left:12px"><div style="font-size:22px;font-weight:700;color:#888">1,72%</div><div style="font-size:10px;color:#888">open rate</div></div>
+      </div>
+      <div class="email-stats"><div class="email-stat"><strong>235</strong>прочтений</div><div class="email-stat"><strong>8</strong>переходов</div><div class="email-stat"><strong>15</strong>отписок</div></div>
+    </div>
+
+    <div class="chart-card" style="margin-top:20px">
+      <h2>Рассылки июня — хронология</h2>
+      <div class="chart-desc">11 рассылок за месяц: запуск марафона (03.06) → SUMMER SALE (10–17.06) → беговой марафон (22–27.06) → анонс пресса (30.06)</div>
+      <div style="font-size:13px;color:#555;line-height:1.7;margin-top:8px">
+        <b>03.06</b> Июньский марафон (анонс) · <b>04.06</b> Реактивация 2024 · <b>06.06</b> Пилатес · <b>08.06</b> Наш подход ·
+        <b>10.06</b> SUMMER SALE −20% + Подарок к курсу · <b>13.06</b> Уход за кожей летом ·
+        <b>17.06</b> Последний день SALE · <b>19.06</b> Домашние напитки · <b>21.06</b> Йога и рельеф ·
+        <b>22.06</b> Беговой марафон (анонс) · <b>24.06</b> Беговой марафон (старт) ·
+        <b>27.06</b> Беговой марафон (последний шанс) · <b>30.06</b> Идеальный пресс — июль
+      </div>
     </div>
   </div>
 
@@ -799,6 +1024,9 @@ function setPeriod(p,btn){
   document.querySelectorAll('#tab-overview .period-section').forEach(s=>{
     s.classList.toggle('active',s.dataset.period===p);
   });
+  document.querySelectorAll('#tab-channels .period-section').forEach(s=>{
+    s.classList.toggle('active',s.dataset.period===p);
+  });
   if(p==='all'){window._monthDone=false;}
   initOverview();
 }
@@ -815,14 +1043,14 @@ function initOverview(){
   if(curPeriod==='all'&&!window._monthDone){
     window._monthDone=true;
     const el=document.getElementById('monthlyChart');
-    if(el&&!el._c) el._c=new Chart(el,{type:'bar',data:{labels:['Январь','Февраль','Март','Апрель','Май'],datasets:[
-      {label:'Визиты',data:[31800,40600,29000,20200,19100],backgroundColor:'#B5D4F4',borderRadius:4,yAxisID:'y'},
-      {label:'Посетители',data:[25200,31100,21800,15400,14500],backgroundColor:'#378ADD',borderRadius:4,yAxisID:'y'},
-      {label:'Расходы (тыс ₽)',data:[36.6,60.2,47.2,42.8,44.7],backgroundColor:'#E07040',borderRadius:4,yAxisID:'y2'}
+    if(el&&!el._c) el._c=new Chart(el,{type:'bar',data:{labels:['Январь','Февраль','Март','Апрель','Май','Июнь'],datasets:[
+      {label:'Визиты',data:[31800,40600,29000,20200,19100,17500],backgroundColor:'#B5D4F4',borderRadius:4,yAxisID:'y'},
+      {label:'Посетители',data:[25200,31100,21800,15400,14500,13100],backgroundColor:'#378ADD',borderRadius:4,yAxisID:'y'},
+      {label:'Расходы (тыс ₽)',data:[36.6,60.2,47.2,42.8,44.7,25.1],backgroundColor:'#E07040',borderRadius:4,yAxisID:'y2'}
     ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{font:{size:12},color:'#555'}}},scales:{x:{ticks:{color:TC,font:{size:12}},grid:{display:false}},y:{ticks:{color:TC,font:{size:11}},grid:{color:GC}},y2:{position:'right',ticks:{color:TC,font:{size:11},callback:v=>v+' тыс'},grid:{display:false}}}}});
   }
-  const src={jan:{l:['Прямые','Соцсети','Поиск','Реклама','Ссылки'],d:[9792,7969,5396,3858,1387],c:['#378ADD','#E07040','#1D9E75','#C0392B','#888']},feb:{l:['Реклама','Прямые','Соцсети','Поиск','Рассылки'],d:[13400,11700,6106,4518,1684],c:['#C0392B','#378ADD','#E07040','#1D9E75','#5599EE']},mar:{l:['Прямые','Соцсети','Реклама','Поиск','Внутренние'],d:[7812,6364,5919,4014,1594],c:['#378ADD','#E07040','#C0392B','#1D9E75','#888']},apr:{l:['Прямые','Соцсети','Поиск','Реклама','Рассылки'],d:[5599,4832,2913,2866,1556],c:['#378ADD','#E07040','#1D9E75','#C0392B','#5599EE']},may:{l:['Прямые','Соцсети','Поиск','Реклама','Email'],d:[5165,4829,2922,2724,1247],c:['#378ADD','#E07040','#1D9E75','#C0392B','#5599EE']}};
-  ['jan','feb','mar','apr','may'].forEach(m=>{
+  const src={jan:{l:['Прямые','Соцсети','Поиск','Реклама','Ссылки'],d:[9792,7969,5396,3858,1387],c:['#378ADD','#E07040','#1D9E75','#C0392B','#888']},feb:{l:['Реклама','Прямые','Соцсети','Поиск','Рассылки'],d:[13400,11700,6106,4518,1684],c:['#C0392B','#378ADD','#E07040','#1D9E75','#5599EE']},mar:{l:['Прямые','Соцсети','Реклама','Поиск','Внутренние'],d:[7812,6364,5919,4014,1594],c:['#378ADD','#E07040','#C0392B','#1D9E75','#888']},apr:{l:['Прямые','Соцсети','Поиск','Реклама','Рассылки'],d:[5599,4832,2913,2866,1556],c:['#378ADD','#E07040','#1D9E75','#C0392B','#5599EE']},may:{l:['Прямые','Соцсети','Поиск','Реклама','Email'],d:[5165,4829,2922,2724,1247],c:['#378ADD','#E07040','#1D9E75','#C0392B','#5599EE']},jun:{l:['Прямые','Соцсети','Поиск','Реклама','Ссылки'],d:[5546,3588,3024,2182,1094],c:['#378ADD','#E07040','#1D9E75','#C0392B','#888']}};
+  ['jan','feb','mar','apr','may','jun'].forEach(m=>{
     if(curPeriod!==m)return;
     const id='srcChart'+m.charAt(0).toUpperCase()+m.slice(1);
     const el=document.getElementById(id);
