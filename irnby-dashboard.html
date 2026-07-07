@@ -479,6 +479,7 @@ a.article-card::after{content:' ↗';font-size:11px;color:#AAA}
 
 <!-- ===== ПОИСК ===== -->
 <div id="tab-search" class="tab-panel">
+<div class="period-section active" data-period="all">
   <div class="section-title">Поиск: Google vs Яндекс</div>
   <div class="section-desc">Органический трафик и отдача от Директа</div>
   <div class="kpi-grid-2">
@@ -495,13 +496,13 @@ a.article-card::after{content:' ↗';font-size:11px;color:#AAA}
 
   <hr class="divider">
   <div class="section-title" style="font-size:18px">Брендовый поиск по месяцам</div>
-  <div class="section-desc">Целевые визиты по фирменным запросам (irnby, миронова курсы и т.п.) · цель «Совершена покупка» · янв–май 2026</div>
+  <div class="section-desc">Целевые визиты по фирменным запросам (irnby, миронова курсы и т.п.) · цель «Совершена покупка» · янв–июнь 2026</div>
   <div class="kpi-grid-3" style="margin-bottom:18px">
     <div class="kpi-card"><div class="kpi-label">Визиты по бренд-запросам</div><div class="kpi-value down" style="font-size:22px">35 → 5</div><div class="kpi-sub">январь → май, спад в 7 раз</div></div>
     <div class="kpi-card"><div class="kpi-label">Доход с этих визитов</div><div class="kpi-value up" style="font-size:22px;color:#1A7A4A">0 → 20 520 ₽</div><div class="kpi-sub">пик в марте — 37 260 ₽</div></div>
     <div class="kpi-card"><div class="kpi-label">Отказы</div><div class="kpi-value" style="font-size:22px">0%</div><div class="kpi-sub">март–май · максимум вовлечения</div></div>
   </div>
-  <div class="chart-card"><h2>Визиты, покупки и доход по бренд-запросам</h2><div class="chart-desc">Визитов всё меньше, но каждый — ценнее: доход на визит вырос с 0 ₽ в январе до ~4 100 ₽ в мае</div><div style="position:relative;height:240px"><canvas id="brandSearchChart"></canvas></div></div>
+  <div class="chart-card"><h2>Визиты, покупки и доход по бренд-запросам</h2><div class="chart-desc">Визитов всё меньше, но каждый — ценнее: доход на визит вырос с 0 ₽ в январе до ~4 100 ₽ в мае. Июнь — отчёт по всем визитам (без фильтра цели), столбец «визиты» не отображается</div><div style="position:relative;height:240px"><canvas id="brandSearchChart"></canvas></div></div>
   <div class="box accent-black"><h3>Что это значит</h3><p>Прямые брендовые запросы («irnby», «миронова курсы», «irnby training club») сокращаются — с 35 визитов в январе до 5 в мае. Это сигнал, что узнаваемость бренда в поиске не растёт сама по себе и нуждается в поддержке: PR-публикациях, SEO-продвижении и медийных активностях, которые формируют спрос на бренд напрямую.</p></div>
 
   <hr class="divider">
@@ -524,6 +525,127 @@ a.article-card::after{content:' ↗';font-size:11px;color:#AAA}
     <div class="kpi-card"><div class="kpi-label">Лучшие скачки позиций</div><div class="kpi-value up" style="font-size:22px;color:#1A7A4A">+60…+91</div><div class="kpi-sub">отдельные запросы поднялись на столько мест</div></div>
   </div>
   <div class="box accent-black"><h3>Сайт начал ранжироваться в поиске</h3><p>За первый месяц работы SEO-специалист собрал базу из 534 ключевых запросов — по большинству из них у сайта раньше вообще не было позиций в выдаче («--»), а сейчас они появились. Доля запросов в ТОП-10 выросла с 1% до 2% всего за три недели, а отдельные фразы поднялись сразу на 60–91 позицию. При этом Google ещё не обработал все внесённые правки — специалист ожидает более выраженный рост уже в следующем отчётном периоде.</p></div>
+</div>
+
+<div class="period-section" data-period="jan">
+  <div class="section-title" style="font-size:18px">Поиск: Яндекс — Январь 2026</div>
+  <div class="section-desc">Целевые визиты · цель «Совершена покупка» · данные Яндекс.Метрика</div>
+  <div class="note" style="margin-bottom:16px">Данные только по Яндексу. Google органика за этот месяц — только суммарно за весь период. В январе доход в цели не фиксировался.</div>
+  <div class="kpi-grid" style="margin-bottom:20px">
+    <div class="kpi-card"><div class="kpi-label">Целевые визиты (Яндекс)</div><div class="kpi-value" style="font-size:26px">35</div><div class="kpi-sub">35 поисковых фраз</div></div>
+    <div class="kpi-card"><div class="kpi-label">Достижений цели</div><div class="kpi-value" style="font-size:26px">83</div><div class="kpi-sub">«Совершена покупка»</div></div>
+    <div class="kpi-card"><div class="kpi-label">Доход</div><div class="kpi-value" style="font-size:26px;color:#888">—</div><div class="kpi-sub">не фиксировался в январе</div></div>
+    <div class="kpi-card"><div class="kpi-label">Отказы</div><div class="kpi-value" style="font-size:26px">2,9%</div><div class="kpi-sub">высокая вовлечённость</div></div>
+  </div>
+  <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:#444">Топ запросов (Яндекс)</div>
+  <div style="background:#F8F8F6;border-radius:8px;padding:0 12px;overflow:hidden">
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby</span><span style="font-weight:600;color:#444">3 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby тренировки</span><span style="font-weight:600;color:#444">3 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby марафон</span><span style="font-weight:600;color:#444">2 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>mymission</span><span style="font-weight:600;color:#444">2 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px"><span>айронби тренировки</span><span style="font-weight:600;color:#444">2 визита</span></div>
+  </div>
+</div>
+
+<div class="period-section" data-period="feb">
+  <div class="section-title" style="font-size:18px">Поиск: Яндекс — Февраль 2026</div>
+  <div class="section-desc">Целевые визиты · цель «Совершена покупка» · данные Яндекс.Метрика</div>
+  <div class="note" style="margin-bottom:16px">Данные только по Яндексу. Google органика за этот месяц — только суммарно за весь период.</div>
+  <div class="kpi-grid" style="margin-bottom:20px">
+    <div class="kpi-card"><div class="kpi-label">Целевые визиты (Яндекс)</div><div class="kpi-value" style="font-size:26px">26</div><div class="kpi-sub">26 поисковых фраз</div></div>
+    <div class="kpi-card"><div class="kpi-label">Достижений цели</div><div class="kpi-value" style="font-size:26px">65</div><div class="kpi-sub">«Совершена покупка»</div></div>
+    <div class="kpi-card"><div class="kpi-label">Доход</div><div class="kpi-value green" style="font-size:26px">14 700 ₽</div><div class="kpi-sub">из Яндекс-поиска</div></div>
+    <div class="kpi-card"><div class="kpi-label">Отказы</div><div class="kpi-value" style="font-size:26px">3,9%</div><div class="kpi-sub">хорошая вовлечённость</div></div>
+  </div>
+  <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:#444">Топ запросов (Яндекс)</div>
+  <div style="background:#F8F8F6;border-radius:8px;padding:0 12px;overflow:hidden">
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>миронова курсы</span><span style="font-weight:600;color:#444">3 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby training</span><span style="font-weight:600;color:#444">2 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby training club</span><span style="font-weight:600;color:#444">2 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>анастасия миронова занятия</span><span style="font-weight:600;color:#444">2 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px"><span>миронова анастасия тренировки</span><span style="font-weight:600;color:#444">2 визита</span></div>
+  </div>
+</div>
+
+<div class="period-section" data-period="mar">
+  <div class="section-title" style="font-size:18px">Поиск: Яндекс — Март 2026</div>
+  <div class="section-desc">Целевые визиты · цель «Совершена покупка» · данные Яндекс.Метрика</div>
+  <div class="note" style="margin-bottom:16px">Данные только по Яндексу. Google органика за этот месяц — только суммарно за весь период.</div>
+  <div class="kpi-grid" style="margin-bottom:20px">
+    <div class="kpi-card"><div class="kpi-label">Целевые визиты (Яндекс)</div><div class="kpi-value" style="font-size:26px">10</div><div class="kpi-sub">10 поисковых фраз</div></div>
+    <div class="kpi-card"><div class="kpi-label">Достижений цели</div><div class="kpi-value" style="font-size:26px">31</div><div class="kpi-sub">«Совершена покупка»</div></div>
+    <div class="kpi-card"><div class="kpi-label">Доход</div><div class="kpi-value green" style="font-size:26px">37 260 ₽</div><div class="kpi-sub">пик за весь период янв–июнь</div></div>
+    <div class="kpi-card"><div class="kpi-label">Отказы</div><div class="kpi-value green" style="font-size:26px">0%</div><div class="kpi-sub">максимальная вовлечённость</div></div>
+  </div>
+  <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:#444">Топ запросов (Яндекс)</div>
+  <div style="background:#F8F8F6;border-radius:8px;padding:0 12px;overflow:hidden">
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby training club</span><span style="font-weight:600;color:#444">3 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>курсы мироновой</span><span style="font-weight:600;color:#444">2 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby</span><span style="font-weight:600;color:#444">1 визит</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby официальный сайт</span><span style="font-weight:600;color:#444">1 визит</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px"><span>тренировки мироновой</span><span style="font-weight:600;color:#444">1 визит</span></div>
+  </div>
+</div>
+
+<div class="period-section" data-period="apr">
+  <div class="section-title" style="font-size:18px">Поиск: Яндекс — Апрель 2026</div>
+  <div class="section-desc">Целевые визиты · цель «Совершена покупка» · данные Яндекс.Метрика</div>
+  <div class="note" style="margin-bottom:16px">Данные только по Яндексу. Google органика за этот месяц — только суммарно за весь период.</div>
+  <div class="kpi-grid" style="margin-bottom:20px">
+    <div class="kpi-card"><div class="kpi-label">Целевые визиты (Яндекс)</div><div class="kpi-value" style="font-size:26px">10</div><div class="kpi-sub">9 уникальных посетителей</div></div>
+    <div class="kpi-card"><div class="kpi-label">Достижений цели</div><div class="kpi-value" style="font-size:26px">33</div><div class="kpi-sub">«Совершена покупка»</div></div>
+    <div class="kpi-card"><div class="kpi-label">Доход</div><div class="kpi-value green" style="font-size:26px">30 075 ₽</div><div class="kpi-sub">из Яндекс-поиска</div></div>
+    <div class="kpi-card"><div class="kpi-label">Отказы</div><div class="kpi-value green" style="font-size:26px">0%</div><div class="kpi-sub">максимальная вовлечённость</div></div>
+  </div>
+  <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:#444">Топ запросов (Яндекс)</div>
+  <div style="background:#F8F8F6;border-radius:8px;padding:0 12px;overflow:hidden">
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby</span><span style="font-weight:600;color:#444">2 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby курсы</span><span style="font-weight:600;color:#444">2 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby tra club</span><span style="font-weight:600;color:#444">1 визит</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>анастасия миронова приобрести курс</span><span style="font-weight:600;color:#444">1 визит</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px"><span>ирнбу курс</span><span style="font-weight:600;color:#444">1 визит</span></div>
+  </div>
+</div>
+
+<div class="period-section" data-period="may">
+  <div class="section-title" style="font-size:18px">Поиск: Яндекс — Май 2026</div>
+  <div class="section-desc">Целевые визиты · цель «Совершена покупка» · данные Яндекс.Метрика</div>
+  <div class="note" style="margin-bottom:16px">Данные только по Яндексу. Google органика за этот месяц — только суммарно за весь период.</div>
+  <div class="kpi-grid" style="margin-bottom:20px">
+    <div class="kpi-card"><div class="kpi-label">Целевые визиты (Яндекс)</div><div class="kpi-value" style="font-size:26px">5</div><div class="kpi-sub">4 уникальных посетителя</div></div>
+    <div class="kpi-card"><div class="kpi-label">Достижений цели</div><div class="kpi-value" style="font-size:26px">20</div><div class="kpi-sub">«Совершена покупка»</div></div>
+    <div class="kpi-card"><div class="kpi-label">Доход</div><div class="kpi-value green" style="font-size:26px">20 520 ₽</div><div class="kpi-sub">из Яндекс-поиска</div></div>
+    <div class="kpi-card"><div class="kpi-label">Отказы</div><div class="kpi-value green" style="font-size:26px">0%</div><div class="kpi-sub">максимальная вовлечённость</div></div>
+  </div>
+  <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:#444">Топ запросов (Яндекс)</div>
+  <div style="background:#F8F8F6;border-radius:8px;padding:0 12px;overflow:hidden">
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>курсы мироновой</span><span style="font-weight:600;color:#444">2 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby club</span><span style="font-weight:600;color:#444">1 визит</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby курсы</span><span style="font-weight:600;color:#444">1 визит</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px"><span>iron by club</span><span style="font-weight:600;color:#444">1 визит</span></div>
+  </div>
+</div>
+
+<div class="period-section" data-period="jun">
+  <div class="section-title" style="font-size:18px">Поиск: Яндекс — Июнь 2026</div>
+  <div class="section-desc">Все визиты из поиска Яндекса · данные Яндекс.Метрика</div>
+  <div class="note" style="margin-bottom:16px">Этот отчёт выгружен без фильтра цели (все визиты из поиска, не только купившие). Поэтому данные не сравнимы напрямую с предыдущими месяцами — там были только «целевые визиты». В июне 315 визитов из 173 поисковых фраз.</div>
+  <div class="kpi-grid" style="margin-bottom:20px">
+    <div class="kpi-card"><div class="kpi-label">Всего визитов из поиска</div><div class="kpi-value" style="font-size:26px">315</div><div class="kpi-sub">241 уникальный посетитель</div></div>
+    <div class="kpi-card"><div class="kpi-label">Покупки (достижение цели)</div><div class="kpi-value" style="font-size:26px">14</div><div class="kpi-sub">конверсия 5,8%</div></div>
+    <div class="kpi-card"><div class="kpi-label">Доход</div><div class="kpi-value green" style="font-size:26px">16 899 ₽</div><div class="kpi-sub">из Яндекс-поиска</div></div>
+    <div class="kpi-card"><div class="kpi-label">Отказы</div><div class="kpi-value" style="font-size:26px">21,9%</div><div class="kpi-sub">выше — трафик без фильтра цели</div></div>
+  </div>
+  <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:#444">Топ запросов (Яндекс)</div>
+  <div style="background:#F8F8F6;border-radius:8px;padding:0 12px;overflow:hidden">
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby training club</span><span style="font-weight:600;color:#444">34 визита</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>курс ягодицы</span><span style="font-weight:600;color:#444">16 визитов</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>my mission миронова</span><span style="font-weight:600;color:#444">14 визитов</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E8E8E8;font-size:13px"><span>irnby тренировки</span><span style="font-weight:600;color:#444">10 визитов</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px"><span>my mission mironova</span><span style="font-weight:600;color:#444">9 визитов</span></div>
+  </div>
+  <div class="box accent-black" style="margin-top:16px"><h3>Что изменилось в июне</h3><p>Появились новые запросы: «курс ягодицы», «my mission миронова» — SEO-контент начинает привлекать продуктовый трафик, не только брендовый. Это первый видимый результат работы SEO-специалиста.</p></div>
+</div>
 </div>
 
 <!-- ===== EMAIL ===== -->
@@ -1027,6 +1149,9 @@ function setPeriod(p,btn){
   document.querySelectorAll('#tab-channels .period-section').forEach(s=>{
     s.classList.toggle('active',s.dataset.period===p);
   });
+  document.querySelectorAll('#tab-search .period-section').forEach(s=>{
+    s.classList.toggle('active',s.dataset.period===p);
+  });
   if(p==='all'){window._monthDone=false;}
   initOverview();
 }
@@ -1090,10 +1215,10 @@ function initSearch(){
   new Chart(document.getElementById('searchChart'),{type:'bar',data:{labels:['Google','Яндекс'],datasets:[{label:'Визиты',data:[13312,3460],backgroundColor:'#B5D4F4',borderRadius:5,yAxisID:'y'},{label:'Покупки',data:[2117,381],backgroundColor:'#378ADD',borderRadius:5,yAxisID:'y'},{label:'Выручка (тыс ₽)',data:[755.8,145.5],backgroundColor:'#97C459',borderRadius:5,yAxisID:'y2'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{font:{size:12},color:'#555'}}},scales:{x:{ticks:{color:TC,font:{size:13}},grid:{display:false}},y:{ticks:{color:TC,font:{size:11}},grid:{color:GC}},y2:{position:'right',ticks:{color:TC,font:{size:11},callback:v=>v+' тыс'},grid:{display:false}}}}});
 
   const bsEl=document.getElementById('brandSearchChart');
-  if(bsEl){new Chart(bsEl,{type:'bar',data:{labels:['Январь','Февраль','Март','Апрель','Май'],datasets:[
-    {label:'Визиты по бренд-запросам',data:[35,26,10,10,5],backgroundColor:'#B5D4F4',borderRadius:4,yAxisID:'y'},
-    {label:'Покупки',data:[83,65,31,33,20],backgroundColor:'#378ADD',borderRadius:4,yAxisID:'y'},
-    {label:'Доход (тыс ₽)',data:[0,14.7,37.26,30.075,20.52],type:'line',borderColor:'#1A7A4A',backgroundColor:'#1A7A4A',tension:.3,yAxisID:'y2'}
+  if(bsEl){new Chart(bsEl,{type:'bar',data:{labels:['Январь','Февраль','Март','Апрель','Май','Июнь'],datasets:[
+    {label:'Визиты по бренд-запросам',data:[35,26,10,10,5,null],backgroundColor:'#B5D4F4',borderRadius:4,yAxisID:'y'},
+    {label:'Покупки',data:[83,65,31,33,20,14],backgroundColor:'#378ADD',borderRadius:4,yAxisID:'y'},
+    {label:'Доход (тыс ₽)',data:[0,14.7,37.26,30.075,20.52,16.899],type:'line',borderColor:'#1A7A4A',backgroundColor:'#1A7A4A',tension:.3,spanGaps:true,yAxisID:'y2'}
   ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{font:{size:12},color:'#555'}}},scales:{x:{ticks:{color:TC,font:{size:12}},grid:{display:false}},y:{ticks:{color:TC,font:{size:11}},grid:{color:GC}},y2:{position:'right',ticks:{color:TC,font:{size:11},callback:v=>v+' тыс'},grid:{display:false}}}}});}
 
   const smEl=document.getElementById('searchMonthlyChart');
